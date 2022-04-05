@@ -11,7 +11,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
 
-public class RecyclerViewAdapter extends RecyclerView.Adapter {
+public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.ViewHolder> {
 
     private ArrayList<Movie> mData;
     private LayoutInflater mInflater;
@@ -30,13 +30,9 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter {
         return new ViewHolder(view);
     }
 
-    @Override
-    public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
-
-    }
 
     // binds the data to the TextView in each row
-    //@Override
+    @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
         // muodostetaan näytöskohtainen teksti
         Movie movie = mData.get(position);
