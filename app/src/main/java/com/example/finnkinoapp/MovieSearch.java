@@ -48,7 +48,7 @@ public class MovieSearch {
     public void readMoviesXML(int theatreID, String date) {
         try {
             DocumentBuilder builder = DocumentBuilderFactory.newInstance().newDocumentBuilder();
-            Document doc = builder.parse(urlString);
+            Document doc = builder.parse(urlString + "?area=" + theatreID +"&dt=" + date);
             doc.getDocumentElement().normalize();
             System.out.println("Root element: " + doc.getDocumentElement().getNodeName());
 
