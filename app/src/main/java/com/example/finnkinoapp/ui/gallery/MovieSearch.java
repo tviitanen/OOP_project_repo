@@ -1,4 +1,4 @@
-package com.example.finnkinoapp;
+package com.example.finnkinoapp.ui.gallery;
 
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;

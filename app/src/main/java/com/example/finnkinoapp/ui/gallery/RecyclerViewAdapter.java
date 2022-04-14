@@ -1,4 +1,4 @@
-package com.example.finnkinoapp;
+package com.example.finnkinoapp.ui.gallery;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -8,6 +8,8 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.example.finnkinoapp.R;
 
 import java.util.ArrayList;
 
@@ -26,7 +28,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     // inflates the row layout from xml when needed
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.text_row_item, parent, false);
+        View view = LayoutInflater.from(parent.getContext()).inflate( R.layout.text_row_item, parent, false);
         /* mInflater.inflate(R.layout.text_row_item, parent, false); */
         /* R.layout.activity_main, parent, false */
         return new ViewHolder(view);

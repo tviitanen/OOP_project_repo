@@ -1,4 +1,4 @@
-package com.example.finnkinoapp.ui.finnkino;
+package com.example.finnkinoapp.ui.gallery;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -12,10 +12,7 @@ import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.Spinner;
 
-import com.example.finnkinoapp.MovieSearch;
 import com.example.finnkinoapp.R;
-import com.example.finnkinoapp.RecyclerViewAdapter;
-import com.example.finnkinoapp.TheatreAreas;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
