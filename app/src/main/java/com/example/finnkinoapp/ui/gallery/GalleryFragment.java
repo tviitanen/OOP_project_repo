@@ -1,6 +1,5 @@
 package com.example.finnkinoapp.ui.gallery;
 
-import android.content.Context;
 import android.os.Bundle;
 import android.os.StrictMode;
 import android.view.LayoutInflater;
@@ -10,11 +9,9 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.Spinner;
-import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -35,10 +32,10 @@ public class GalleryFragment extends Fragment {
     Spinner spinner1;
     RecyclerView recyclerView1;
     EditText textTime, textDate;
-    int teatteriID;
+    int theatreID;
     View root;
 
-    // määritetään päivämäärä
+    // initializinf dates
     Date date = new Date();
     SimpleDateFormat dateFormatter = new SimpleDateFormat( "dd.MM.yyyy" );
     SimpleDateFormat timeFormatter = new SimpleDateFormat( "HH:mm" );
@@ -47,61 +44,51 @@ public class GalleryFragment extends Fragment {
 
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        //GalleryViewModel galleryViewModel = new ViewModelProvider(this).get(GalleryViewModel.class);
-
         binding = FragmentGalleryBinding.inflate(inflater, container, false);
         root = binding.getRoot();
-
-        //final TextView textView = binding.textGallery;
-        //galleryViewModel.getText().observe(getViewLifecycleOwner(), textView::setText);
-
-        //setContentView( R.layout.finnkino_activity);
 
         context = GalleryFragment.this;
         StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
         StrictMode.setThreadPolicy( policy );
 
-
-        // luodaan tietorakenne elokuvateattereille
+        // creating class for movie theatres
         theatreAreas = TheatreAreas.getInstance();
         theatreAreas.readTheatreAreasXML();
 
         System.out.println( theatreAreas.theatreAmount() ); // --debug
         System.out.println( "Tänään on " + stringDate ); // --debug
 
-        // maaritetaan tekstikentat
+        // initializing textfields
         textDate = (EditText) root.findViewById( R.id.editTextDate );
         textDate.setText( stringDate );
         textTime = (EditText) root.findViewById( R.id.editTextTime );
         textTime.setText( stringTime );
 
 
-        // MAARITETAAN SPINNERI
+        // INITIALIZING SPINNER
         spinner1 = (Spinner) root.findViewById( R.id.spinner1 );
         ArrayList<String> theatreNames = new ArrayList<>();
 
-        // luodaan lista teattereiden nimistä
+        // creating list from movie names
         for (int i = 0; i < theatreAreas.theatreAmount(); i++) {
             theatreNames.add( theatreAreas.getTheatre( i ).getName() );
-
         }
 
-        // asetetaan listojen sisallot spinnereihin
+        // setting up spinner1
         ArrayAdapter<String> adapter1 =
                 new ArrayAdapter<String>( getContext(), android.R.layout.simple_spinner_dropdown_item, theatreNames );
         adapter1.setDropDownViewResource( android.R.layout.simple_spinner_dropdown_item );
         spinner1.setAdapter( adapter1 );
-
         spinner1.setOnItemSelectedListener( new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> arg0, View view, int arg2, long arg3) {
                 if (TheatreAreas.getTheatreID((int) spinner1.getSelectedItemId()) != -1){
-                    // get information on user choice theatre
-                    System.out.println( "Valinta " + spinner1.getSelectedItemId() ); // --debug
+                    // initializing variables for movieseach
                     latestMovies = new MovieSearch();
-                    teatteriID = TheatreAreas.getInstance().getTheatreID( Integer.valueOf( (int) spinner1.getSelectedItemId() ) );
-                    latestMovies.readMoviesXML( teatteriID, stringDate );
+                    theatreID = TheatreAreas.getInstance().getTheatreID( Integer.valueOf( (int) spinner1.getSelectedItemId() ) );
 
+                    // get movies by search criteria
+                    latestMovies.readMoviesXML( theatreID, String.valueOf(textDate.getText()), String.valueOf(textTime.getText()) );
 
                     // set information on recyclerview
                     recyclerView1.setLayoutManager(new LinearLayoutManager(getContext()));
@@ -109,14 +96,14 @@ public class GalleryFragment extends Fragment {
                     recyclerView1.setHasFixedSize(true);
                     recyclerView1.setAdapter( adapter2 );
 
-
-                    System.out.println("########RECYCLERVIEW CHANGED########");
+                    System.out.println("########RECYCLERVIEW CHANGED########"); // -debug
                 }
             }
 
             @Override
             public void onNothingSelected(AdapterView<?> adapterView) {
             }
+
 
         } );
 

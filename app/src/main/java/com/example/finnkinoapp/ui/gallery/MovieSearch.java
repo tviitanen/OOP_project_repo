@@ -10,17 +10,18 @@ import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
 
 public class MovieSearch {
-
     private ArrayList<Movie> movies = new ArrayList<>();
-    private String urlString = "https://www.finnkino.fi/xml/Schedule/";
+    private String urlScheduleString = "https://www.finnkino.fi/xml/Schedule/";
     private String reformattedStr;
-
+    private SimpleDateFormat fromUser = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss");
+    private SimpleDateFormat myFormat = new SimpleDateFormat("HH:mm");
 
     public int movieAmount() {
         return(movies.size());
@@ -44,11 +45,11 @@ public class MovieSearch {
         return(this.movies);
     }
 
-    // read
-    public void readMoviesXML(int theatreID, String date) {
+    // read Finnkino schedule XML by search criteria
+    public void readMoviesXML(int theatreID, String date, String time) {
         try {
             DocumentBuilder builder = DocumentBuilderFactory.newInstance().newDocumentBuilder();
-            Document doc = builder.parse(urlString + "?area=" + theatreID +"&dt=" + date);
+            Document doc = builder.parse(urlScheduleString + "?area=" + theatreID +"&dt=" + date);
             doc.getDocumentElement().normalize();
             System.out.println("Root element: " + doc.getDocumentElement().getNodeName());
 
@@ -56,31 +57,35 @@ public class MovieSearch {
 
             for (int i = 0; i < nList.getLength() ; i++) {
                 Node node = nList.item( i );
-                System.out.println("Element is " + node.getNodeName());
 
                 if (node.getNodeType() == Node.ELEMENT_NODE) {
                     Element element = (Element) node;
-                    SimpleDateFormat fromUser = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss");
-                    SimpleDateFormat myFormat = new SimpleDateFormat("HH:mm");
 
-                    // asetetaan tiedot omaan luokkaan
-                    Movie thre = new Movie();
-                    thre.setID(Integer. valueOf(element.getElementsByTagName( "ID" ).item(0).getTextContent()));
-                    thre.setTitle(element.getElementsByTagName( "Title" ).item(0).getTextContent());
+                    // set data to movie-class
+                    Movie mve = new Movie();
+                    mve.setID(Integer. valueOf(element.getElementsByTagName( "ID" ).item(0).getTextContent()));
+                    mve.setTitle(element.getElementsByTagName( "Title" ).item(0).getTextContent());
 
-                    // luetaan ja parsitaan aika
+                    // read and parse of time data
                     try {
                         reformattedStr = myFormat.format(fromUser.parse(element.getElementsByTagName( "dttmShowStart" ).item(0).getTextContent()));
                     } catch (ParseException e) {
                         e.printStackTrace();
                     }
-                    thre.setShowStart(reformattedStr);
 
+                    mve.setShowStart(reformattedStr);
 
-                    //System.out.println("Movie is " + thre.getTitle()); // --debug
-                    System.out.println(element.getElementsByTagName( "Title" ).item(0).getTextContent()); // --debug
+                    try {
+                        Date d1 = myFormat.parse(reformattedStr);
+                        Date d2 = myFormat.parse(time);
 
-                    setMovie(thre);
+                        if (d1.compareTo(d2) > 0) {
+                            setMovie(mve);
+                        }
+
+                    } catch (ParseException e) {
+                        e.printStackTrace();
+                    }
 
                 }
             }
