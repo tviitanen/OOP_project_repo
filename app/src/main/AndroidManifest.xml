@@ -12,6 +12,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.FinnkinoApp">
         <activity
+            android:name=".ui.Auth.ProfileActivity"
+            android:exported="false" />
+        <activity
             android:name=".ui.Auth.RegisterActivity"
             android:exported="false" />
         <activity
