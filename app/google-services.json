@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "109364408219",
+    "project_id": "finnkino-app-7cc1d",
+    "storage_bucket": "finnkino-app-7cc1d.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:109364408219:android:8d7592d8c4f20c31913b3e",
+        "android_client_info": {
+          "package_name": "com.example.finnkinoapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "109364408219-s1h2u8berrt3jbnskgcc3b4ue4dqgca8.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCJYVL19P_lyW0g94lMYNajgCfKUQBrXoE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "109364408219-s1h2u8berrt3jbnskgcc3b4ue4dqgca8.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

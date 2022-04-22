@@ -1,6 +1,8 @@
 package com.example.finnkinoapp.ui.Auth;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,11 +12,13 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
+import com.example.finnkinoapp.R;
 import com.example.finnkinoapp.databinding.FragmentHomeBinding;
 
-public class HomeFragment extends Fragment {
+public class HomeFragment extends Fragment implements  View.OnClickListener {
 
     private FragmentHomeBinding binding;
+    private TextView register;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -23,6 +27,8 @@ public class HomeFragment extends Fragment {
 
         binding = FragmentHomeBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
+        register = binding.registerUser;
+        register.setOnClickListener(this);
 
         // final TextView textView = binding.textHome;
         // homeViewModel.getText().observe(getViewLifecycleOwner(), textView::setText);
@@ -33,5 +39,14 @@ public class HomeFragment extends Fragment {
     public void onDestroyView() {
         super.onDestroyView();
         binding = null;
+    }
+
+    @Override
+    public void onClick(View view) {
+        switch (view.getId()) {
+            case R.id.registerUser:
+                startActivity(new Intent(getActivity().getBaseContext(), RegisterActivity.class));
+                break;
+        }
     }
 }
