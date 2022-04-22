@@ -27,6 +27,8 @@ public class HomeFragment extends Fragment implements  View.OnClickListener {
 
         binding = FragmentHomeBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
+
+        // register button
         register = binding.registerUser;
         register.setOnClickListener(this);
 
@@ -42,6 +44,7 @@ public class HomeFragment extends Fragment implements  View.OnClickListener {
     }
 
     @Override
+    // clicking register text opens new activity for register view
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.registerUser:
