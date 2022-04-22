@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 
@@ -32,6 +33,7 @@ public class GalleryFragment extends Fragment {
     Spinner spinner1;
     RecyclerView recyclerView1;
     EditText textTime, textDate;
+    Button button1;
     int theatreID;
     View root;
 
@@ -64,6 +66,14 @@ public class GalleryFragment extends Fragment {
         textTime = (EditText) root.findViewById( R.id.editTextTime );
         textTime.setText( stringTime );
 
+        // initializing button1
+        button1 = (Button) root.findViewById( R.id.button1 );
+        button1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                search();
+            }
+        });
 
         // INITIALIZING SPINNER
         spinner1 = (Spinner) root.findViewById( R.id.spinner1 );
@@ -83,20 +93,7 @@ public class GalleryFragment extends Fragment {
             @Override
             public void onItemSelected(AdapterView<?> arg0, View view, int arg2, long arg3) {
                 if (TheatreAreas.getTheatreID((int) spinner1.getSelectedItemId()) != -1){
-                    // initializing variables for movieseach
-                    latestMovies = new MovieSearch();
-                    theatreID = TheatreAreas.getInstance().getTheatreID( Integer.valueOf( (int) spinner1.getSelectedItemId() ) );
-
-                    // get movies by search criteria
-                    latestMovies.readMoviesXML( theatreID, String.valueOf(textDate.getText()), String.valueOf(textTime.getText()) );
-
-                    // set information on recyclerview
-                    recyclerView1.setLayoutManager(new LinearLayoutManager(getContext()));
-                    adapter2 = new RecyclerViewAdapter( getContext(), latestMovies.getMovieList() );
-                    recyclerView1.setHasFixedSize(true);
-                    recyclerView1.setAdapter( adapter2 );
-
-                    System.out.println("########RECYCLERVIEW CHANGED########"); // -debug
+                    search();
                 }
             }
 
@@ -118,5 +115,23 @@ public class GalleryFragment extends Fragment {
     public void onDestroyView() {
         super.onDestroyView();
         binding = null;
+    }
+
+    // movie search method
+    public void search() {
+        // initializing variables for movieseach
+        latestMovies = new MovieSearch();
+        theatreID = TheatreAreas.getInstance().getTheatreID( Integer.valueOf( (int) spinner1.getSelectedItemId() ) );
+
+        // get movies by search criteria
+        latestMovies.readMoviesXML( theatreID, String.valueOf(textDate.getText()), String.valueOf(textTime.getText()) );
+
+        // set information on recyclerview
+        recyclerView1.setLayoutManager(new LinearLayoutManager(getContext()));
+        adapter2 = new RecyclerViewAdapter( getContext(), latestMovies.getMovieList() );
+        recyclerView1.setHasFixedSize(true);
+        recyclerView1.setAdapter( adapter2 );
+
+        System.out.println("########RECYCLERVIEW CHANGED########"); // -debug
     }
 }
