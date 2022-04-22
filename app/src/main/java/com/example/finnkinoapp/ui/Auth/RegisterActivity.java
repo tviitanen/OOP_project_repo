@@ -112,7 +112,7 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
                         // if register succesfull, create user object
                         if (task.isSuccessful()) {
                             User user = new User(fullName, email, dateOfBirth);
-                            FirebaseDatabase.getInstance().getReference("Users")
+                            FirebaseDatabase.getInstance("https://finnkino-app-7cc1d-default-rtdb.europe-west1.firebasedatabase.app").getReference("Users")
                                     .child(FirebaseAuth.getInstance().getCurrentUser().getUid())
                                     .setValue(user).addOnCompleteListener(new OnCompleteListener<Void>() {
                                 @Override
