@@ -51,7 +51,7 @@ public class MovieSearch {
             DocumentBuilder builder = DocumentBuilderFactory.newInstance().newDocumentBuilder();
             Document doc = builder.parse(urlScheduleString + "?area=" + theatreID +"&dt=" + date);
             doc.getDocumentElement().normalize();
-            System.out.println("Root element: " + doc.getDocumentElement().getNodeName());
+            //System.out.println("Root element: " + doc.getDocumentElement().getNodeName());
 
             NodeList nList = doc.getDocumentElement().getElementsByTagName( "Show" );
 
