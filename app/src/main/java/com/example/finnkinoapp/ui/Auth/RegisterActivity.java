@@ -99,7 +99,7 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
             return;
         }
         // check lenght of the password  (firebase minimum lenght is 6)
-        if (password.length() < 6) {
+        if (password.length() < 12) {
             editTextTextPassword.setError("Password too short. Atleast 6 characters required.");
             editTextTextPassword.requestFocus();
             return;
