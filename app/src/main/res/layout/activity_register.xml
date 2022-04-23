@@ -7,7 +7,7 @@
     tools:context=".ui.Auth.RegisterActivity">
 
     <EditText
-        android:id="@+id/editTextTextEmailAddress"
+        android:id="@+id/editTextEmailAddress"
         android:layout_width="264dp"
         android:layout_height="48dp"
         android:ems="10"
@@ -21,7 +21,7 @@
         app:layout_constraintVertical_bias="0.571" />
 
     <EditText
-        android:id="@+id/editTextTextPassword"
+        android:id="@+id/editTextPassword"
         android:layout_width="264dp"
         android:layout_height="48dp"
         android:ems="10"
@@ -35,7 +35,7 @@
         app:layout_constraintVertical_bias="0.688" />
 
     <Button
-        android:id="@+id/register_button"
+        android:id="@+id/registerButton"
         android:layout_width="114dp"
         android:layout_height="53dp"
         android:clickable="true"
@@ -79,7 +79,7 @@
         app:layout_constraintVertical_bias="0.156" />
 
     <EditText
-        android:id="@+id/editTextTextPersonName"
+        android:id="@+id/editTextPersonName"
         android:layout_width="264dp"
         android:layout_height="48dp"
         android:ems="10"

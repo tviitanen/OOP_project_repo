@@ -33,9 +33,9 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
         mAuth = FirebaseAuth.getInstance();
 
         editTextBirthDate = (EditText) findViewById(R.id.editTextBirthDate);
-        editTextTextPersonName = (EditText) findViewById(R.id.editTextTextPersonName);
-        editTextTextEmailAddress = (EditText) findViewById(R.id.editTextTextEmailAddress);
-        editTextTextPassword = (EditText) findViewById(R.id.editTextTextPassword);
+        editTextTextPersonName = (EditText) findViewById(R.id.editTextPersonName);
+        editTextTextEmailAddress = (EditText) findViewById(R.id.editTextEmailAddress);
+        editTextTextPassword = (EditText) findViewById(R.id.editTextPassword);
 
     }
 
@@ -58,7 +58,7 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
     @Override
     public void onClick(View view) {
         switch (view.getId()){
-            case R.id.register_button:
+            case R.id.registerButton:
                 registerUser();
                 break;
         }

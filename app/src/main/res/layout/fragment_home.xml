@@ -8,7 +8,7 @@
     tools:context=".ui.Auth.HomeFragment">
 
     <EditText
-        android:id="@+id/editTextTextEmailAddress"
+        android:id="@+id/editTextEmailAddress"
         android:layout_width="264dp"
         android:layout_height="48dp"
         android:ems="10"
@@ -22,7 +22,7 @@
         app:layout_constraintVertical_bias="0.333" />
 
     <EditText
-        android:id="@+id/editTextTextPassword"
+        android:id="@+id/editTextPassword"
         android:layout_width="264dp"
         android:layout_height="48dp"
         android:ems="10"
@@ -36,7 +36,7 @@
         app:layout_constraintVertical_bias="0.455" />
 
     <Button
-        android:id="@+id/login_button"
+        android:id="@+id/loginButton"
         android:layout_width="114dp"
         android:layout_height="53dp"
         android:text="LOGIN"
@@ -48,7 +48,7 @@
         app:layout_constraintVertical_bias="0.588" />
 
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/forgotPassword"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:clickable="true"

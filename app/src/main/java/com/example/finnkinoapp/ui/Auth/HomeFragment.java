@@ -3,7 +3,6 @@ package com.example.finnkinoapp.ui.Auth;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Patterns;
-import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,7 +15,6 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
-import com.example.finnkinoapp.MainActivity;
 import com.example.finnkinoapp.R;
 import com.example.finnkinoapp.databinding.FragmentHomeBinding;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -32,6 +30,7 @@ public class HomeFragment extends Fragment implements  View.OnClickListener {
     private EditText editTextPassword;
     private Button logIn;
     private FirebaseAuth mAuth;
+
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         HomeViewModel homeViewModel =
@@ -39,21 +38,22 @@ public class HomeFragment extends Fragment implements  View.OnClickListener {
 
         binding = FragmentHomeBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
-
         // Login button
+
+        // initialize mAuth to firebase auth
+        mAuth = FirebaseAuth.getInstance();
+
         logIn = binding.loginButton;
         logIn.setOnClickListener(this);
 
         // user inputs email & password
-        editTextEmail = binding.editTextTextEmailAddress;
-        editTextPassword = binding.editTextTextPassword;
+        editTextEmail = binding.editTextEmailAddress;
+        editTextPassword = binding.editTextPassword;
 
         // register button
         register = binding.registerUser;
         register.setOnClickListener(this);
 
-        // final TextView textView = binding.textHome;
-        // homeViewModel.getText().observe(getViewLifecycleOwner(), textView::setText);
         return root;
     }
 
@@ -70,7 +70,7 @@ public class HomeFragment extends Fragment implements  View.OnClickListener {
             case R.id.registerUser:
                 startActivity(new Intent(getActivity().getBaseContext(), RegisterActivity.class));
                 break;
-            case R.id.login_button:
+            case R.id.loginButton:
                 userLogin();
                 break;
         }
@@ -79,6 +79,7 @@ public class HomeFragment extends Fragment implements  View.OnClickListener {
     private void userLogin() {
         String email = editTextEmail.getText().toString().trim();
         String password = editTextPassword.getText().toString().trim();
+
         if (email.isEmpty()) {
             editTextEmail.setError("Email is required!");
             editTextEmail.requestFocus();
@@ -97,13 +98,13 @@ public class HomeFragment extends Fragment implements  View.OnClickListener {
         }
         // check lenght of the password  (firebase minimum lenght is 6)
         if (password.length() < 6) {
-            editTextPassword.setError("Password too short. Atleast 6 characters required.");
+            editTextPassword.setError("Password too short. Password contains atleast 6 characters.");
             editTextPassword.requestFocus();
             return;
         }
 
         // firebase authorization
-        mAuth.signInWithEmailAndPassword(email,password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+        mAuth.getInstance().signInWithEmailAndPassword(email,password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 // if data added to a db succesfully, make a toast notice
