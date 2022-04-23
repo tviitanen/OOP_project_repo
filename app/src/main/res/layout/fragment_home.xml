@@ -11,6 +11,7 @@
         android:id="@+id/editTextEmailAddress"
         android:layout_width="264dp"
         android:layout_height="48dp"
+        android:allowUndo="false"
         android:ems="10"
         android:hint="email"
         android:inputType="textEmailAddress"

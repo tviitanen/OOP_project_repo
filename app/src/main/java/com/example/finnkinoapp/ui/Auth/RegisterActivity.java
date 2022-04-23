@@ -104,6 +104,14 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
             editTextTextPassword.requestFocus();
             return;
         }
+        // regex to check that password contains letters and numbers
+        if (!password.matches("^(?=.*[A-Ö])(?=.*[0-9])[A-Ö0-9]+$")) {
+            editTextTextPassword.setError("Password too weak. Password must contain letters and numbers.");
+            editTextTextPassword.requestFocus();
+            return;
+        }
+
+
         // registration
         mAuth.createUserWithEmailAndPassword(email, password)
                 .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
