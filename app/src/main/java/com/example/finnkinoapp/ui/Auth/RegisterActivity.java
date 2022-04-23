@@ -98,20 +98,33 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
             editTextTextPassword.requestFocus();
             return;
         }
-        // check lenght of the password  (firebase minimum lenght is 6)
+
+        // check password strenght 12 chars long, atleast one special char, lowercase and uppercase letter and number
         if (password.length() < 12) {
             editTextTextPassword.setError("Password too short. Atleast 6 characters required.");
             editTextTextPassword.requestFocus();
             return;
         }
-        // regex to check that password contains letters and numbers
-        if (!password.matches("^(?=.*[A-Ö])(?=.*[0-9])[A-Ö0-9]+$")) {
-            editTextTextPassword.setError("Password too weak. Password must contain letters and numbers.");
+        if (!password.matches("(?=.*[a-ö]) ")){
+            editTextTextPassword.setError("Password must contain atleast one lowercase letter");
             editTextTextPassword.requestFocus();
             return;
         }
-
-
+        if (!password.matches("(?=.*[A-Ö])")){
+            editTextTextPassword.setError("Password must contain atleast one uppercase letter");
+            editTextTextPassword.requestFocus();
+            return;
+        }
+        if (!password.matches("(?=.[!@#\\$%\\^&])")){
+            editTextTextPassword.setError("Password must contain atleast one special character (!@#$%&)");
+            editTextTextPassword.requestFocus();
+            return;
+        }
+        if (!password.matches("(?=.*[0-9]) ")){
+            editTextTextPassword.setError("Password must contain atleast one number");
+            editTextTextPassword.requestFocus();
+            return;
+        }
         // registration
         mAuth.createUserWithEmailAndPassword(email, password)
                 .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
