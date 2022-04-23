@@ -1,4 +1,4 @@
-package com.example.finnkinoapp.ui.gallery;
+package com.example.finnkinoapp.ui.Movie;
 
 public class Theatre {
     private int ID;

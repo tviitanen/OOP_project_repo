@@ -1,4 +1,4 @@
-package com.example.finnkinoapp.ui.slideshow;
+package com.example.finnkinoapp.ui.Favorites;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;

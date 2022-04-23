@@ -9,5 +9,5 @@
 
     <string name="menu_home">Account</string>
     <string name="menu_gallery">Search</string>
-    <string name="menu_slideshow">Slideshow</string>
+    <string name="menu_slideshow">Favorites</string>
 </resources>

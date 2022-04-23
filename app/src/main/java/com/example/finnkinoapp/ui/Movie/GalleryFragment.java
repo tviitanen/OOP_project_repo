@@ -1,4 +1,4 @@
-package com.example.finnkinoapp.ui.gallery;
+package com.example.finnkinoapp.ui.Movie;
 
 import android.os.Bundle;
 import android.os.StrictMode;
