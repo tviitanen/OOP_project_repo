@@ -39,10 +39,9 @@ public class ProfileActivity extends AppCompatActivity {
             public void onClick(View view) {
                 FirebaseAuth.getInstance().signOut();
 
-                // go back to home fragment after logout
-                HomeFragment homeFragment = new HomeFragment();
-                FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-                transaction.replace(R.id.imageView, homeFragment).commit();
+                // Close activity and go back to home fragment after logout
+                ProfileActivity.this.finish();
+
                 Toast.makeText(ProfileActivity.this, "\"You are now logged out.\"", Toast.LENGTH_LONG).show();
 
             }
