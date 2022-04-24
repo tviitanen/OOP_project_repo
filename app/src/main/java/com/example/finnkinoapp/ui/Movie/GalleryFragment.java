@@ -58,7 +58,7 @@ public class GalleryFragment extends Fragment {
         theatreAreas.readTheatreAreasXML();
 
         System.out.println( theatreAreas.theatreAmount() ); // --debug
-        System.out.println( "Tänään on " + stringDate ); // --debug
+        //System.out.println( "Tänään on " + stringDate ); // --debug
 
         // initializing textfields
         textDate = (EditText) root.findViewById( R.id.editTextDate );

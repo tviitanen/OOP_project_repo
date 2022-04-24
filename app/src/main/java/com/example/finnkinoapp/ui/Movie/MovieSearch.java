@@ -23,10 +23,6 @@ public class MovieSearch {
     private SimpleDateFormat fromUser = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss");
     private SimpleDateFormat myFormat = new SimpleDateFormat("HH:mm");
 
-    public int movieAmount() {
-        return(movies.size());
-    }
-
     public void setMovie(Movie thre){
         try {
             if (thre != null) {

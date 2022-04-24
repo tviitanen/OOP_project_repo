@@ -46,6 +46,8 @@ import javax.xml.transform.stream.StreamResult;
 public class HandleFavXML {
 
     private String xmlFilePath;
+    private Favorites favorites;
+    private ArrayList<Favorites> favoritesArrayList;
 
 
     public void writeXML(Context context, Favorites favorites) throws FileNotFoundException {
@@ -128,7 +130,9 @@ public class HandleFavXML {
     }
 
 
-    public void readXML(@NonNull Context context) {
+    public ArrayList<Favorites> readXML(@NonNull Context context) {
+        favoritesArrayList = new ArrayList<Favorites>(); // initializing arraylist for favorites
+
         try {
             InputStream inputstream = new FileInputStream(context.getFilesDir() + "/" + "favorites.xml");
 
@@ -144,6 +148,17 @@ public class HandleFavXML {
 
                 if (node.getNodeType() == Node.ELEMENT_NODE) {
                     Element element = (Element) node;
+
+                    // setting new favorites
+                    favorites = new Favorites();
+                    favorites.setUser( element.getElementsByTagName( "user" ).item(0).getTextContent() );
+                    favorites.setFavorite1( element.getElementsByTagName( "favorite1" ).item(0).getTextContent() );
+                    favorites.setFavorite2( element.getElementsByTagName( "favorite2" ).item(0).getTextContent() );
+                    favorites.setFavorite3( element.getElementsByTagName( "favorite3" ).item(0).getTextContent() );
+                    favorites.setFavorite4( element.getElementsByTagName( "favorite4" ).item(0).getTextContent() );
+                    favorites.setFavorite5( element.getElementsByTagName( "favorite5" ).item(0).getTextContent() );
+                    favoritesArrayList.add(favorites);
+
 
                     System.out.println(element.getElementsByTagName( "user" ).item(0).getTextContent()); // -debug
                     System.out.println(element.getElementsByTagName( "favorite1" ).item(0).getTextContent()); // -debug
@@ -167,5 +182,7 @@ public class HandleFavXML {
         } finally {
             System.out.println( "##########FAVORITES READ SUCCESSFUL##########" );
         }
+
+        return(favoritesArrayList);
     }
 }
