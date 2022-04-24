@@ -106,7 +106,7 @@ public class HomeFragment extends Fragment implements  View.OnClickListener {
             return;
         }
 
-        // firebase authorization
+        // firebase authorization / login using email & password
         mAuth.getInstance().signInWithEmailAndPassword(email,password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {

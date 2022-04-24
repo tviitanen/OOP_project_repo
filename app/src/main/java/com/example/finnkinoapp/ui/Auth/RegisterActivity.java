@@ -18,6 +18,9 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.FirebaseDatabase;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+
 public class RegisterActivity extends AppCompatActivity implements View.OnClickListener {
     private EditText editTextTextPersonName, editTextBirthDate, editTextTextPassword, editTextTextEmailAddress;
     private FirebaseAuth mAuth;
@@ -80,6 +83,15 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
         if (dateOfBirth.isEmpty()) {
             editTextBirthDate.setError("Date of Birth is required!");
             editTextBirthDate.requestFocus();
+            return;
+        }
+        // check that user input is in the form of dd.mm.yyyy
+        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd.MM.yyyy");
+        try {
+            LocalDate dob = LocalDate.parse(dateOfBirth, dtf);
+        } catch (java.time.format.DateTimeParseException e){
+            editTextTextEmailAddress.setError("Date of Birth must be in the form of 'dd.mm.yyyy'");
+            editTextTextEmailAddress.requestFocus();
             return;
         }
         if (email.isEmpty()) {
