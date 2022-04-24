@@ -44,10 +44,18 @@ import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
 
 public class HandleFavXML {
-
+    private static HandleFavXML handleFavXML = null;
     private String xmlFilePath;
     private Favorites favorites;
     private ArrayList<Favorites> favoritesArrayList;
+
+    private HandleFavXML(){}
+
+    public static HandleFavXML getInstance() {
+        if (handleFavXML == null)
+            handleFavXML = new HandleFavXML();
+        return handleFavXML;
+    }
 
 
     public void writeXML(Context context, Favorites favorites) throws FileNotFoundException {
