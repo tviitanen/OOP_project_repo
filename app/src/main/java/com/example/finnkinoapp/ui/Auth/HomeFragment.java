@@ -31,6 +31,7 @@ public class HomeFragment extends Fragment implements  View.OnClickListener {
     private Button logIn;
     private FirebaseAuth mAuth;
 
+
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         HomeViewModel homeViewModel =
@@ -38,11 +39,11 @@ public class HomeFragment extends Fragment implements  View.OnClickListener {
 
         binding = FragmentHomeBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
-        // Login button
 
         // initialize mAuth to firebase auth
         mAuth = FirebaseAuth.getInstance();
 
+        // login button
         logIn = binding.loginButton;
         logIn.setOnClickListener(this);
 
@@ -57,9 +58,11 @@ public class HomeFragment extends Fragment implements  View.OnClickListener {
         return root;
     }
 
+
     @Override
     public void onDestroyView() {
         super.onDestroyView();
+        //((DrawerController) getActivity()).setDrawerLocked(null);
         binding = null;
     }
 
