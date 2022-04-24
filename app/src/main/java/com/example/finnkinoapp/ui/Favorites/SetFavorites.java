@@ -36,11 +36,7 @@ public class SetFavorites extends AppCompatActivity {
         button1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                // go back to slideshow fragment after changing favorites
-                SlideshowFragment slideshowFragment = new SlideshowFragment();
-                FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-                transaction.replace(R.id.imageView, slideshowFragment).commit(); //imageView
-                //Toast.makeText( SetFavorites.this, "\"You are now changed favorites.\"", Toast.LENGTH_LONG).show();
+                SetFavorites.this.finish(); // close SetFavorites
 
             }
         });

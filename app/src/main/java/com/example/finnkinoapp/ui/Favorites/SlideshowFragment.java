@@ -28,8 +28,7 @@ public class SlideshowFragment extends Fragment {
     private FragmentSlideshowBinding binding;
     private HandleFavXML handleFavXML;
     private Context context;
-    private Button button1, button2;
-    //private View root;
+    private Button button1;
     RecyclerViewAdapterFavorites adapter1;
     RecyclerView recyclerView1;
 
@@ -39,45 +38,6 @@ public class SlideshowFragment extends Fragment {
         View root = binding.getRoot();
         context = this.getContext();
 
-
-        /*
-        // initializing classes
-        handleFavXML = new HandleFavXML();
-
-        // setting up recycler view for favorites
-        recyclerView1 = (RecyclerView) root.findViewById(R.id.recyclerView1);
-        ArrayList<Favorites> favoritesArrayList = handleFavXML.readXML( context );
-        setRecyclerView(favoritesArrayList);
-
-        // initializing button1
-        button1 = (Button) root.findViewById( R.id.button1 );
-        button1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                try {
-                    // THIS SHOULD BE MOVED TO DIFFERENT ACTIVITY
-                    // setting favorites
-                    Favorites favorites = new Favorites();
-                    favorites.setUser( "mrMikoma" );
-                    favorites.setFavorite1( "MCHelper beKINGs 1" );
-                    favorites.setFavorite2( "MCHelper beKINGs 2" );
-                    favorites.setFavorite3( "MCHelper beKINGs 3" );
-                    favorites.setFavorite4( "MCHelper beKINGs 4" );
-                    favorites.setFavorite5( "MCHelper beKINGs 5" );
-                    // writing favorites into xml
-                    handleFavXML.writeXML( context, favorites );
-
-                    // start 'setfavorites' activity
-                    Intent intentSetFavorites = new Intent( context , SetFavorites.class);
-                    startActivity(intentSetFavorites);
-
-
-                } catch (FileNotFoundException e) {
-                    e.printStackTrace();
-                }
-            }
-        });
-        */
         return root;
 
     }
@@ -98,27 +58,9 @@ public class SlideshowFragment extends Fragment {
         button1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                try {
-                    // THIS SHOULD BE MOVED TO DIFFERENT ACTIVITY
-                    // setting favorites
-                    Favorites favorites = new Favorites();
-                    favorites.setUser( "mrMikoma" );
-                    favorites.setFavorite1( "MCHelper beKINGs 1" );
-                    favorites.setFavorite2( "MCHelper beKINGs 2" );
-                    favorites.setFavorite3( "MCHelper beKINGs 3" );
-                    favorites.setFavorite4( "MCHelper beKINGs 4" );
-                    favorites.setFavorite5( "MCHelper beKINGs 5" );
-                    // writing favorites into xml
-                    handleFavXML.writeXML( context, favorites );
-
-                    // start 'setfavorites' activity
-                    Intent intentSetFavorites = new Intent( context , SetFavorites.class);
-                    startActivity(intentSetFavorites);
-
-
-                } catch (FileNotFoundException e) {
-                    e.printStackTrace();
-                }
+                // start 'setfavorites' activity
+                Intent intentSetFavorites = new Intent( context , SetFavorites.class);
+                startActivity(intentSetFavorites);
             }
         });
     }
@@ -138,7 +80,6 @@ public class SlideshowFragment extends Fragment {
         adapter1 = new RecyclerViewAdapterFavorites( getContext(), favoritesArrayList );
         recyclerView1.setHasFixedSize(true);
         recyclerView1.setAdapter( adapter1 );
-
         System.out.println("########RECYCLERVIEW CHANGED########"); // -debug
 
     }
