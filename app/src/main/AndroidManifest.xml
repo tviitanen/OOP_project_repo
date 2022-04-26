@@ -18,7 +18,7 @@
             android:name=".ui.Auth.RegisterActivity"
             android:exported="false" />
         <activity
-            android:name=".ui.Favorites.SetFavorites"
+            android:name=".ui.Favorites.SetFavoritesActivity"
             android:exported="false" />
         <activity
             android:name=".MainActivity"
