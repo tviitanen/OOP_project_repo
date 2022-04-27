@@ -1,10 +1,7 @@
 package com.example.finnkinoapp.ui.Favorites;
 
-import android.app.FragmentManager;
-import android.app.FragmentTransaction;
 import android.content.Context;
 import android.content.Intent;
-import android.os.Build;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,8 +10,6 @@ import android.widget.Button;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
-import androidx.loader.app.LoaderManager;
-import androidx.loader.content.Loader;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -52,7 +47,7 @@ public class FavoriteFragment extends Fragment {
         setRecyclerView(favoritesArrayList);
 
         // initializing button1
-        button1 = (Button) view.findViewById( R.id.button1 );
+        button1 = (Button) view.findViewById( R.id.button_back );
         button1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

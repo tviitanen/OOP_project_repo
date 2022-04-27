@@ -35,7 +35,7 @@ public class SetFavoritesActivity extends AppCompatActivity {
         editText6 = (EditText) findViewById( R.id.editText6 );
 
         // initializing button1
-        button1 = (Button) findViewById( R.id.button1 );
+        button1 = (Button) findViewById( R.id.button_back );
         button1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

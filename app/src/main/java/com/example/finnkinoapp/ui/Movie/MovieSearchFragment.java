@@ -80,7 +80,7 @@ public class MovieSearchFragment extends Fragment {
         textTime.setText( stringTime );
 
         // initializing button1
-        button1 = (Button) root.findViewById( R.id.button1 );
+        button1 = (Button) root.findViewById( R.id.button_back );
         button1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
