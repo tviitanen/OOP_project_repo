@@ -1,3 +1,16 @@
+/*****************************************************
+* Finnkino app
+*
+* @authors Teemu Viitanen, Miko Mattila, Otto Oikarinen
+*
+* Minimum Android API level 26
+*
+* Licensed under GNU General Public License v3.0
+*
+*
+******************************************************/
+
+
 package com.example.finnkinoapp;
 
 import android.content.Intent;
