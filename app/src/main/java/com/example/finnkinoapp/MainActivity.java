@@ -85,7 +85,6 @@ public class MainActivity extends AppCompatActivity {
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate( R.menu.main, menu );
-        System.out.println( "Käydäänkö täällä?" );
         return true;
     }
 
@@ -97,7 +96,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-    /*
+
     //Handling Action Bar button click
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
@@ -108,13 +107,15 @@ public class MainActivity extends AppCompatActivity {
             //Back button
             case android.R.id.home:
                 //onCreateOptionsMenu();
-
+                System.out.println( "Home menu kutsuttu!" );
+                onSupportNavigateUp();
 
                 return true;
-            case R.id.toolbar:
+            case R.id.action_settings:
                 // start 'settings' activity
                 Intent intentSetFavorites = new Intent( getApplicationContext() , SettingsActivity.class);
                 startActivity(intentSetFavorites);
+                System.out.println( "Settings kutsuttu!" );
 
                 return true;
             default:
@@ -122,5 +123,5 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-     */
+
 }
