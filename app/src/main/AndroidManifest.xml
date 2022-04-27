@@ -13,7 +13,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.FinnkinoApp">
         <activity
-            android:name=".ui.IMDBActivity"
+            android:name=".ui.Movie.IMDBActivity"
             android:exported="false" />
         <activity
             android:name=".ui.Auth.ProfileActivity"

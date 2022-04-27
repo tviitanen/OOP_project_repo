@@ -1,4 +1,4 @@
-package com.example.finnkinoapp.ui;
+package com.example.finnkinoapp.ui.Movie;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -7,7 +7,7 @@ import android.view.MenuItem;
 import android.widget.TextView;
 
 import com.example.finnkinoapp.R;
-import com.example.finnkinoapp.ui.Movie.Movie;
+
 
 public class IMDBActivity extends AppCompatActivity {
     private Movie movie;

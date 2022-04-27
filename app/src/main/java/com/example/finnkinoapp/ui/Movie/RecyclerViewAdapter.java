@@ -11,7 +11,7 @@ import android.widget.TextView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.finnkinoapp.R;
-import com.example.finnkinoapp.ui.IMDBActivity;
+
 
 import java.util.ArrayList;
 
