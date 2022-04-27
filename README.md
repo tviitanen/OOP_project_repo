@@ -10,4 +10,4 @@
 ![Android Studio](https://img.shields.io/badge/Android_Studio-3DDC84?style=for-the-badge&logo=android-studio&logoColor=white)
 
 ### Project description
-In this project, we are developing an Android app with Java. We are implementing some basic functionalities for searching Movies from Finnkino API. Users should be able to search movies based on date, location, etc. We're also going to use IMDB API to get actors, ratings, and other information for a certain movie. Users can create their own account with password verification and biometric identification.
+In this project, we are developing an Android app with Java. We are implementing some basic functionalities for searching Movies from Finnkino API. Users should be able to search movies based on date, location, etc. There exist functionality to store favourite movies locally to XML file. We're also going to use IMDB API to get actors, ratings, and other information for a certain movie. App provides features to register, login/out and show personal data using Firebase database.
