@@ -84,5 +84,4 @@ public class SetFavoritesActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-
 }

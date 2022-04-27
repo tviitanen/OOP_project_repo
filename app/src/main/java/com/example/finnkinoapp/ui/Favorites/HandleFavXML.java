@@ -150,14 +150,6 @@ public class HandleFavXML {
                     favorites.setFavorite5( element.getElementsByTagName( "favorite5" ).item(0).getTextContent() );
                     favoritesArrayList.add(favorites);
 
-
-                    System.out.println(element.getElementsByTagName( "user" ).item(0).getTextContent()); // -debug
-                    System.out.println(element.getElementsByTagName( "favorite1" ).item(0).getTextContent()); // -debug
-                    System.out.println(element.getElementsByTagName( "favorite2" ).item(0).getTextContent()); // -debug
-                    System.out.println(element.getElementsByTagName( "favorite3" ).item(0).getTextContent()); // -debug
-                    System.out.println(element.getElementsByTagName( "favorite4" ).item(0).getTextContent()); // -debug
-                    System.out.println(element.getElementsByTagName( "favorite5" ).item(0).getTextContent()); // -debug
-
                 }
             }
 

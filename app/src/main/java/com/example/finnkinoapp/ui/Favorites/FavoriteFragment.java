@@ -37,8 +37,6 @@ public class FavoriteFragment extends Fragment {
         View root = binding.getRoot();
         context = this.getContext();
 
-        System.out.println("Käydäänkö täällä?");
-
         return root;
 
     }
