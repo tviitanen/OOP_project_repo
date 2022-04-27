@@ -90,8 +90,8 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
         try {
             LocalDate dob = LocalDate.parse(dateOfBirth, dtf);
         } catch (java.time.format.DateTimeParseException e){
-            editTextTextEmailAddress.setError("Date of Birth must be in the form of 'dd.mm.yyyy'");
-            editTextTextEmailAddress.requestFocus();
+            editTextBirthDate.setError("Date of Birth must be in the form of 'dd.mm.yyyy'");
+            editTextBirthDate.requestFocus();
             return;
         }
         if (email.isEmpty()) {

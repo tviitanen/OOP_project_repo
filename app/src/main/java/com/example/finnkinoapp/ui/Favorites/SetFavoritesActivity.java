@@ -7,13 +7,12 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.FragmentTransaction;
 
 import com.example.finnkinoapp.R;
 
 import java.io.FileNotFoundException;
 
-public class SetFavorites extends AppCompatActivity {
+public class SetFavoritesActivity extends AppCompatActivity {
 
     private Button button1, button2;
     private EditText editText1, editText2, editText3, editText4, editText5, editText6;
@@ -36,7 +35,7 @@ public class SetFavorites extends AppCompatActivity {
         button1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                SetFavorites.this.finish(); // close SetFavorites
+                SetFavoritesActivity.this.finish(); // close SetFavorites
 
             }
         });
@@ -47,7 +46,6 @@ public class SetFavorites extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 try {
-                    // THIS SHOULD BE MOVED TO DIFFERENT ACTIVITY
                     // setting favorites
                     Favorites favorites = new Favorites();
                     favorites.setUser( String.valueOf( editText1.getText() ) );
@@ -61,7 +59,7 @@ public class SetFavorites extends AppCompatActivity {
                     HandleFavXML.getInstance().writeXML( getApplicationContext(), favorites );
 
                     // send toast
-                    Toast.makeText( SetFavorites.this, "\"Favorites saved successfully.\"", Toast.LENGTH_LONG).show();
+                    Toast.makeText( SetFavoritesActivity.this, "\"Favorites saved successfully.\"", Toast.LENGTH_LONG).show();
 
                 } catch (FileNotFoundException e) {
                     e.printStackTrace();

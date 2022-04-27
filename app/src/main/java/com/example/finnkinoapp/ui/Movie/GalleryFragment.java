@@ -1,5 +1,6 @@
 package com.example.finnkinoapp.ui.Movie;
 
+import android.os.Build;
 import android.os.Bundle;
 import android.os.StrictMode;
 import android.view.LayoutInflater;
@@ -12,6 +13,7 @@ import android.widget.EditText;
 import android.widget.Spinner;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -20,8 +22,12 @@ import com.example.finnkinoapp.R;
 import com.example.finnkinoapp.databinding.FragmentGalleryBinding;
 
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.Locale;
 
 public class GalleryFragment extends Fragment {
 
@@ -90,6 +96,7 @@ public class GalleryFragment extends Fragment {
         adapter1.setDropDownViewResource( android.R.layout.simple_spinner_dropdown_item );
         spinner1.setAdapter( adapter1 );
         spinner1.setOnItemSelectedListener( new AdapterView.OnItemSelectedListener() {
+            @RequiresApi(api = Build.VERSION_CODES.O)
             @Override
             public void onItemSelected(AdapterView<?> arg0, View view, int arg2, long arg3) {
                 if (TheatreAreas.getTheatreID((int) spinner1.getSelectedItemId()) != -1){
@@ -118,13 +125,36 @@ public class GalleryFragment extends Fragment {
     }
 
     // movie search method
+    @RequiresApi(api = Build.VERSION_CODES.O)
     public void search() {
         // initializing variables for movieseach
         latestMovies = new MovieSearch();
         theatreID = TheatreAreas.getInstance().getTheatreID( Integer.valueOf( (int) spinner1.getSelectedItemId() ) );
 
+        // error handle for user date
+        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd.MM.yyyy");
+        try {
+            LocalDate.parse(String.valueOf(textDate.getText()), dtf);
+
+        } catch (java.time.format.DateTimeParseException e){
+            textDate.setError("Date must be in the form of 'dd.mm.yyyy'");
+            textDate.requestFocus();
+            return;
+        }
+
+        // error handle for user time
+        DateTimeFormatter dtt = DateTimeFormatter.ofPattern("H:mm");
+        try {
+            LocalTime.parse(String.valueOf(textTime.getText()), dtt);
+
+        } catch (java.time.format.DateTimeParseException e){
+            textTime.setError("Time must be in the form of 'H:mm'");
+            textTime.requestFocus();
+            return;
+        }
+
         // get movies by search criteria
-        latestMovies.readMoviesXML( theatreID, String.valueOf(textDate.getText()), String.valueOf(textTime.getText()) );
+        latestMovies.readMoviesXML( theatreID, String.valueOf(textDate.getText()) , String.valueOf(textTime.getText()) );
 
         // set information on recyclerview
         recyclerView1.setLayoutManager(new LinearLayoutManager(getContext()));
@@ -133,5 +163,6 @@ public class GalleryFragment extends Fragment {
         recyclerView1.setAdapter( adapter2 );
 
         System.out.println("########RECYCLERVIEW CHANGED########"); // -debug
+        return;
     }
 }
