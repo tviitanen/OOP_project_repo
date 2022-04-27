@@ -96,6 +96,7 @@ public class MainActivity extends AppCompatActivity {
                 || super.onSupportNavigateUp();
     }
 
+
     /*
     //Handling Action Bar button click
     @Override
