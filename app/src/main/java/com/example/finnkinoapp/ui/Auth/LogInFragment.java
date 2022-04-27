@@ -22,7 +22,7 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 
-public class HomeFragment extends Fragment implements  View.OnClickListener {
+public class LogInFragment extends Fragment implements  View.OnClickListener {
 
     private FragmentHomeBinding binding;
     private TextView register;
@@ -35,8 +35,8 @@ public class HomeFragment extends Fragment implements  View.OnClickListener {
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        HomeViewModel homeViewModel =
-                new ViewModelProvider(this).get(HomeViewModel.class);
+        LogInViewModel homeViewModel =
+                new ViewModelProvider(this).get(LogInViewModel.class);
 
         binding = FragmentHomeBinding.inflate(inflater, container, false);
         View root = binding.getRoot();

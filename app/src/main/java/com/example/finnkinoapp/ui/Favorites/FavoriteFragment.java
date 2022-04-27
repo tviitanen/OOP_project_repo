@@ -23,7 +23,7 @@ import com.example.finnkinoapp.databinding.FragmentSlideshowBinding;
 
 import java.util.ArrayList;
 
-public class SlideshowFragment extends Fragment {
+public class FavoriteFragment extends Fragment {
     private FragmentSlideshowBinding binding;
     private HandleFavXML handleFavXML;
     private Context context;

@@ -35,10 +35,10 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 
-public class GalleryFragment extends Fragment {
+public class MovieSearchFragment extends Fragment {
 
     private FragmentGalleryBinding binding;
-    private GalleryFragment context;
+    private MovieSearchFragment context;
     RecyclerViewAdapter adapter2;
     TheatreAreas theatreAreas;
     MovieSearch latestMovies;
@@ -64,7 +64,7 @@ public class GalleryFragment extends Fragment {
         root = binding.getRoot();
 
 
-        context = GalleryFragment.this;
+        context = MovieSearchFragment.this;
         StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
         StrictMode.setThreadPolicy( policy );
 

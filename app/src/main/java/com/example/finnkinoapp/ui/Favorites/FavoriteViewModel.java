@@ -1,16 +1,16 @@
-package com.example.finnkinoapp.ui.Auth;
+package com.example.finnkinoapp.ui.Favorites;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
-public class HomeViewModel extends ViewModel {
+public class FavoriteViewModel extends ViewModel {
 
     private final MutableLiveData<String> mText;
 
-    public HomeViewModel() {
+    public FavoriteViewModel() {
         mText = new MutableLiveData<>();
-        mText.setValue("This is Auth fragment");
+        mText.setValue("This is slideshow fragment");
     }
 
     public LiveData<String> getText() {
