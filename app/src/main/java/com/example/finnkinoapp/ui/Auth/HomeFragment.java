@@ -71,6 +71,7 @@ public class HomeFragment extends Fragment implements  View.OnClickListener {
         binding = null;
     }
 
+
     @Override
     // clicking register text opens new activity for register view
     public void onClick(View view) {
