@@ -1,9 +1,11 @@
 package com.example.finnkinoapp.ui.Movie;
 
 import android.app.DatePickerDialog;
+import android.app.TimePickerDialog;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.StrictMode;
+import android.text.InputType;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,6 +15,7 @@ import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.TimePicker;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
@@ -135,6 +138,18 @@ public class GalleryFragment extends Fragment {
                 new DatePickerDialog(getActivity(), date, calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH), calendar.get(Calendar.DAY_OF_MONTH)).show();
             }
         });
+        // time picker functionality
+        textTime.setClickable(true);
+        textTime.setLongClickable(false);
+        textTime.setInputType(InputType.TYPE_NULL);
+
+        textTime.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                // open clock to pick date
+                showTimePicker();
+            }
+        });
 
 
         // set up the RecyclerView
@@ -152,6 +167,21 @@ public class GalleryFragment extends Fragment {
     // update textDate from calendar
     private void updateLabel(){
         textDate.setText(dateFormatter.format(calendar.getTime()));
+    }
+
+    // time picker to pick date
+    private void showTimePicker(){
+        Calendar mcurrentTime = Calendar.getInstance();
+        int hour = mcurrentTime.get(Calendar.HOUR_OF_DAY);
+        int minute = mcurrentTime.get(Calendar.MINUTE);
+        TimePickerDialog timePickerDialog = new TimePickerDialog(getActivity(), new TimePickerDialog.OnTimeSetListener() {
+
+            @Override
+            public void onTimeSet(TimePicker timePicker, int selectedHour, int selectedMinute) {
+
+            }
+        }, hour, minute, false);
+        timePickerDialog.show();
     }
 
     // movie search method
