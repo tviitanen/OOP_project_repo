@@ -48,8 +48,6 @@ public class MovieSearchFragment extends Fragment {
     int theatreID;
     View root;
     final Calendar calendar = Calendar.getInstance();
-    final Calendar clockCalendar = Calendar.getInstance();
-
 
     // initializing dates
     Date date = new Date();
