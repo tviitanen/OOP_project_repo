@@ -1,6 +1,7 @@
 package com.example.finnkinoapp.ui.Favorites;
 
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -21,6 +22,9 @@ public class SetFavoritesActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView( R.layout.activity_setfavorites);
+
+        // actionbar
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         // initializing editTexts
         editText1 = (EditText) findViewById( R.id.editText1 );
@@ -66,6 +70,18 @@ public class SetFavoritesActivity extends AppCompatActivity {
                 }
             }
         });
+    }
+
+    // back button
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                SetFavoritesActivity.this.finish(); // close SetFavorites
+                return true;
+        }
+
+        return super.onOptionsItemSelected(item);
     }
 
 
