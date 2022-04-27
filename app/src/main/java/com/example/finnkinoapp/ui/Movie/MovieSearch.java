@@ -1,5 +1,7 @@
 package com.example.finnkinoapp.ui.Movie;
 
+import com.example.finnkinoapp.ui.ImdbApiReader;
+
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
@@ -59,8 +61,12 @@ public class MovieSearch {
 
                     // set data to movie-class
                     Movie mve = new Movie();
+                    ImdbApiReader imdb = new ImdbApiReader();
                     mve.setID(Integer. valueOf(element.getElementsByTagName( "ID" ).item(0).getTextContent()));
                     mve.setTitle(element.getElementsByTagName( "Title" ).item(0).getTextContent());
+                    mve.setOriginalTitle(element.getElementsByTagName( "OriginalTitle" ).item(0).getTextContent());
+                    // System.out.println(mve.getOriginalTitle()); -- for debugging
+
 
                     // read and parse of time data
                     try {

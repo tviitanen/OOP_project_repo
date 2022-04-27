@@ -113,7 +113,6 @@ public class GalleryFragment extends Fragment {
 
         // set up the RecyclerView
         recyclerView1 = (RecyclerView) root.findViewById(R.id.recyclerView1);
-
         return root;
 
     }
