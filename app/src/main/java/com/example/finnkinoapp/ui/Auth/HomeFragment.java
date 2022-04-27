@@ -26,6 +26,7 @@ public class HomeFragment extends Fragment implements  View.OnClickListener {
 
     private FragmentHomeBinding binding;
     private TextView register;
+    private TextView forgotPassword;
     private EditText editTextEmail;
     private EditText editTextPassword;
     private Button logIn;
@@ -55,6 +56,10 @@ public class HomeFragment extends Fragment implements  View.OnClickListener {
         register = binding.registerUser;
         register.setOnClickListener(this);
 
+        // forgot password button
+        forgotPassword = binding.forgotPassword;
+        forgotPassword.setOnClickListener(this);
+
         return root;
     }
 
@@ -75,6 +80,9 @@ public class HomeFragment extends Fragment implements  View.OnClickListener {
                 break;
             case R.id.loginButton:
                 userLogin();
+                break;
+            case R.id.forgotPassword:
+                Toast.makeText(getActivity(), "\"Feature coming soon...\"", Toast.LENGTH_LONG).show();
                 break;
         }
     }
