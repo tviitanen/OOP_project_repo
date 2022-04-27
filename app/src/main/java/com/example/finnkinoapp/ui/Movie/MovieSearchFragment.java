@@ -49,6 +49,7 @@ public class MovieSearchFragment extends Fragment {
     int theatreID;
     View root;
     final Calendar calendar = Calendar.getInstance();
+    final Calendar clockCalendar = Calendar.getInstance();
 
 
     // initializing dates
@@ -124,25 +125,32 @@ public class MovieSearchFragment extends Fragment {
                 calendar.set(Calendar.YEAR, year);
                 calendar.set(Calendar.MONTH, month);
                 calendar.set(Calendar.DAY_OF_MONTH, day);
-                updateLabel();
+                updateDateLabel();
             }
         };
-        // open calendar onclick
+        // time picker functionality
+        TimePickerDialog.OnTimeSetListener time = new TimePickerDialog.OnTimeSetListener() {
+            @Override
+            public void onTimeSet(TimePicker timePicker, int hour, int minute) {
+                calendar.set(Calendar.HOUR_OF_DAY, hour);
+                calendar.set(Calendar.MINUTE, minute);
+                updateTimeLabel();
+            }
+        };
+
+        // click listener for date
         textDate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 new DatePickerDialog(getActivity(), date, calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH), calendar.get(Calendar.DAY_OF_MONTH)).show();
             }
         });
-        // time picker functionality
-        textTime.setClickable(true);
-        textTime.setLongClickable(false);
-        textTime.setInputType(InputType.TYPE_NULL);
+        // click listener for time
         textTime.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                // open clock to pick date
-                showTimePicker();
+                new TimePickerDialog(getActivity(), time, calendar.get(Calendar.HOUR_OF_DAY), calendar.get(Calendar.MINUTE), false
+                ).show();
             }
         });
 
@@ -166,23 +174,12 @@ public class MovieSearchFragment extends Fragment {
     }
 
     // update textDate from calendar
-    private void updateLabel(){
+    private void updateDateLabel(){
         textDate.setText(dateFormatter.format(calendar.getTime()));
     }
-
-    // time picker to pick date
-    private void showTimePicker(){
-        Calendar mcurrentTime = Calendar.getInstance();
-        int hour = mcurrentTime.get(Calendar.HOUR_OF_DAY);
-        int minute = mcurrentTime.get(Calendar.MINUTE);
-        TimePickerDialog timePickerDialog = new TimePickerDialog(getActivity(), new TimePickerDialog.OnTimeSetListener() {
-
-            @Override
-            public void onTimeSet(TimePicker timePicker, int selectedHour, int selectedMinute) {
-
-            }
-        }, hour, minute, false);
-        timePickerDialog.show();
+    // update textTime from clock
+    private void updateTimeLabel(){
+        textTime.setText(timeFormatter.format(calendar.getTime()));
     }
 
     // movie search method
