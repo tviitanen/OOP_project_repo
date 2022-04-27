@@ -60,6 +60,7 @@ public class SettingsActivity extends AppCompatActivity {
         ArrayAdapter<String> adapter1 =
                 new ArrayAdapter<String>( getApplicationContext(), android.R.layout.simple_spinner_dropdown_item, settings.getLanguages() );
         adapter1.setDropDownViewResource( android.R.layout.simple_spinner_dropdown_item );
+        spinner1.setAdapter( adapter1 );
 
         // initializing button1
         button1 = (Button) findViewById( R.id.button_back );
