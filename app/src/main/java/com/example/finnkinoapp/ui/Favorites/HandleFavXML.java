@@ -1,14 +1,7 @@
 package com.example.finnkinoapp.ui.Favorites;
 
 import android.content.Context;
-import android.os.Environment;
-import android.renderscript.ScriptGroup;
-import android.util.Xml;
-
 import androidx.annotation.NonNull;
-
-import com.example.finnkinoapp.ui.Movie.GalleryFragment;
-import com.example.finnkinoapp.ui.Movie.Movie;
 
 import org.w3c.dom.Attr;
 import org.w3c.dom.Document;
@@ -16,23 +9,13 @@ import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
-import org.xmlpull.v1.XmlPullParser;
-import org.xmlpull.v1.XmlPullParserException;
-import org.xmlpull.v1.XmlPullParserFactory;
-import org.xmlpull.v1.XmlSerializer;
 
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.io.StringReader;
-import java.io.StringWriter;
-import java.text.ParseException;
 import java.util.ArrayList;
-import java.util.Date;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;

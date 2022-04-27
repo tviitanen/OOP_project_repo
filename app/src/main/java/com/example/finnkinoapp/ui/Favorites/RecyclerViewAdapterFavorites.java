@@ -9,8 +9,6 @@ import android.widget.TextView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.finnkinoapp.R;
-import com.example.finnkinoapp.ui.Movie.Movie;
-
 import java.util.ArrayList;
 
 public class RecyclerViewAdapterFavorites extends RecyclerView.Adapter<RecyclerViewAdapterFavorites.ViewHolder> {

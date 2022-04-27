@@ -11,7 +11,6 @@ import android.widget.TextView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.finnkinoapp.R;
-import com.example.finnkinoapp.ui.Auth.RegisterActivity;
 import com.example.finnkinoapp.ui.IMDBActivity;
 
 import java.util.ArrayList;
@@ -46,8 +45,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         // muodostetaan näytöskohtainen teksti
         Movie movie = mData.get(position);
         String show = movie.getTitle() + "\n"
-                + movie.getShowStart() + "\n"
-                + "##################\n";
+                + movie.getShowStart() + "\n";
 
         holder.myTextView.setText(show);
 

@@ -20,10 +20,10 @@ import android.widget.TimePicker;
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.finnkinoapp.MainActivity;
 import com.example.finnkinoapp.R;
 import com.example.finnkinoapp.databinding.FragmentGalleryBinding;
 
@@ -34,7 +34,6 @@ import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
-import java.util.Locale;
 
 public class GalleryFragment extends Fragment {
 
@@ -113,12 +112,9 @@ public class GalleryFragment extends Fragment {
                     search();
                 }
             }
-
             @Override
             public void onNothingSelected(AdapterView<?> adapterView) {
             }
-
-
         } );
 
         // calendar functionality
@@ -154,6 +150,12 @@ public class GalleryFragment extends Fragment {
 
         // set up the RecyclerView
         recyclerView1 = (RecyclerView) root.findViewById(R.id.recyclerView1);
+
+        // item separator lines in recycler view
+        RecyclerView.ItemDecoration itemDecoration = new
+                DividerItemDecoration(getActivity(), DividerItemDecoration.VERTICAL);
+        recyclerView1.addItemDecoration(itemDecoration);
+
         return root;
 
     }
@@ -187,7 +189,7 @@ public class GalleryFragment extends Fragment {
     // movie search method
     @RequiresApi(api = Build.VERSION_CODES.O)
     public void search() {
-        // initializing variables for movieseach
+        // initializing variables for movie search
         latestMovies = new MovieSearch();
         theatreID = TheatreAreas.getInstance().getTheatreID( Integer.valueOf( (int) spinner1.getSelectedItemId() ) );
 
