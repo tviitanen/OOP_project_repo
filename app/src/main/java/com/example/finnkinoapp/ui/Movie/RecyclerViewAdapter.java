@@ -44,7 +44,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     public void onBindViewHolder(ViewHolder holder, int position) {
         // muodostetaan näytöskohtainen teksti
         Movie movie = mData.get(position);
-        String show = movie.getTitle() + "\n"
+        String show = "\n" + movie.getTitle() + "\n"
                 + movie.getShowStart() + "\n";
 
         holder.myTextView.setText(show);

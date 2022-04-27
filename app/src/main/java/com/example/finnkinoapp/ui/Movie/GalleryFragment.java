@@ -138,7 +138,6 @@ public class GalleryFragment extends Fragment {
         textTime.setClickable(true);
         textTime.setLongClickable(false);
         textTime.setInputType(InputType.TYPE_NULL);
-
         textTime.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
