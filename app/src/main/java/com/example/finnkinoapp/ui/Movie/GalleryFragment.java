@@ -1,5 +1,6 @@
 package com.example.finnkinoapp.ui.Movie;
 
+import android.app.DatePickerDialog;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.StrictMode;
@@ -9,6 +10,7 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.Spinner;
 
@@ -18,6 +20,7 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.finnkinoapp.MainActivity;
 import com.example.finnkinoapp.R;
 import com.example.finnkinoapp.databinding.FragmentGalleryBinding;
 
@@ -26,6 +29,7 @@ import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.Locale;
 
@@ -42,6 +46,8 @@ public class GalleryFragment extends Fragment {
     Button button1;
     int theatreID;
     View root;
+    final Calendar calendar = Calendar.getInstance();
+
 
     // initializinf dates
     Date date = new Date();
@@ -54,6 +60,7 @@ public class GalleryFragment extends Fragment {
         super.onCreate(savedInstanceState);
         binding = FragmentGalleryBinding.inflate(inflater, container, false);
         root = binding.getRoot();
+
 
         context = GalleryFragment.this;
         StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
@@ -111,6 +118,25 @@ public class GalleryFragment extends Fragment {
 
         } );
 
+        // calendar functionality
+        DatePickerDialog.OnDateSetListener date = new DatePickerDialog.OnDateSetListener() {
+            @Override
+            public void onDateSet(DatePicker datePicker, int year, int month, int day) {
+                calendar.set(Calendar.YEAR, year);
+                calendar.set(Calendar.MONTH, month);
+                calendar.set(Calendar.DAY_OF_MONTH, day);
+                updateLabel();
+            }
+        };
+        // open calendar onclick
+        textDate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                new DatePickerDialog(getActivity(), date, calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH), calendar.get(Calendar.DAY_OF_MONTH)).show();
+            }
+        });
+
+
         // set up the RecyclerView
         recyclerView1 = (RecyclerView) root.findViewById(R.id.recyclerView1);
         return root;
@@ -121,6 +147,11 @@ public class GalleryFragment extends Fragment {
     public void onDestroyView() {
         super.onDestroyView();
         binding = null;
+    }
+
+    // update textDate from calendar
+    private void updateLabel(){
+        textDate.setText(dateFormatter.format(calendar.getTime()));
     }
 
     // movie search method
