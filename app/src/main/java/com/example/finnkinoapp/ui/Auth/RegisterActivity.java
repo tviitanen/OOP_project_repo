@@ -3,11 +3,13 @@ package com.example.finnkinoapp.ui.Auth;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.DatePickerDialog;
 import android.os.Bundle;
 import android.util.Patterns;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.Toast;
 
@@ -18,12 +20,21 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.FirebaseDatabase;
 
+import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.Calendar;
 
 public class RegisterActivity extends AppCompatActivity implements View.OnClickListener {
     private EditText editTextTextPersonName, editTextBirthDate, editTextTextPassword, editTextTextEmailAddress;
     private FirebaseAuth mAuth;
+    final Calendar calendar = Calendar.getInstance();
+    private DatePickerDialog.OnDateSetListener date;
+
+    // date format dd.mm.yyyy
+    DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd.MM.yyyy");
+    SimpleDateFormat dateFormatter = new SimpleDateFormat( "dd.MM.yyyy" );
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -39,6 +50,24 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
         editTextTextPersonName = (EditText) findViewById(R.id.editTextPersonName);
         editTextTextEmailAddress = (EditText) findViewById(R.id.editTextEmailAddress);
         editTextTextPassword = (EditText) findViewById(R.id.editTextPassword);
+
+        // calendar functionality
+        DatePickerDialog.OnDateSetListener date = new DatePickerDialog.OnDateSetListener() {
+            @Override
+            public void onDateSet(DatePicker datePicker, int year, int month, int day) {
+                calendar.set(Calendar.YEAR, year);
+                calendar.set(Calendar.MONTH, month);
+                calendar.set(Calendar.DAY_OF_MONTH, day);
+                updateLabel();
+            }
+        };
+        // open calendar onclick
+        editTextBirthDate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                new DatePickerDialog(RegisterActivity.this, date, calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH), calendar.get(Calendar.DAY_OF_MONTH)).show();
+            }
+        });
 
     }
 
@@ -66,7 +95,10 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
                 break;
         }
     }
-
+    // update textDate from calendar
+    private void updateLabel(){
+        editTextBirthDate.setText(dateFormatter.format(calendar.getTime()));
+    }
     private void registerUser() {
 
         String email = editTextTextEmailAddress.getText().toString().trim();
@@ -85,8 +117,7 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
             editTextBirthDate.requestFocus();
             return;
         }
-        // check that user input is in the form of dd.mm.yyyy
-        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd.MM.yyyy");
+
         try {
             LocalDate dob = LocalDate.parse(dateOfBirth, dtf);
         } catch (java.time.format.DateTimeParseException e){
@@ -112,7 +143,7 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
             return;
         }
 
-        // check password strenght 12 chars long, atleast one special char, lowercase and uppercase letter and number
+        // check password strength 12 chars long, at least one special char, lowercase and uppercase letter and number
         if (password.length() < 12) {
             editTextTextPassword.setError("Password too short. Atleast 6 characters required.");
             editTextTextPassword.requestFocus();

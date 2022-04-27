@@ -49,7 +49,7 @@ public class GalleryFragment extends Fragment {
     final Calendar calendar = Calendar.getInstance();
 
 
-    // initializinf dates
+    // initializing dates
     Date date = new Date();
     SimpleDateFormat dateFormatter = new SimpleDateFormat( "dd.MM.yyyy" );
     SimpleDateFormat timeFormatter = new SimpleDateFormat( "HH:mm" );
@@ -73,7 +73,7 @@ public class GalleryFragment extends Fragment {
         System.out.println( theatreAreas.theatreAmount() ); // --debug
         //System.out.println( "Tänään on " + stringDate ); // --debug
 
-        // initializing textfields
+        // initializing text fields
         textDate = (EditText) root.findViewById( R.id.editTextDate );
         textDate.setText( stringDate );
         textTime = (EditText) root.findViewById( R.id.editTextTime );
