@@ -96,15 +96,30 @@ public class MainActivity extends AppCompatActivity {
                 || super.onSupportNavigateUp();
     }
 
+    /*
     //Handling Action Bar button click
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        super.onOptionsItemSelected( item );
+        //super.onOptionsItemSelected( item );
 
-        // start 'settings' activity
-        Intent intentSetFavorites = new Intent( getApplicationContext() , SettingsActivity.class);
-        startActivity(intentSetFavorites);
+        // Handle item selection
+        switch (item.getItemId()) {
+            //Back button
+            case android.R.id.home:
+                //onCreateOptionsMenu();
 
-        return true;
+
+                return true;
+            case R.id.toolbar:
+                // start 'settings' activity
+                Intent intentSetFavorites = new Intent( getApplicationContext() , SettingsActivity.class);
+                startActivity(intentSetFavorites);
+
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
     }
+
+     */
 }
