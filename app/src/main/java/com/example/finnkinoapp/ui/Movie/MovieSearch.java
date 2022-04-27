@@ -1,7 +1,5 @@
 package com.example.finnkinoapp.ui.Movie;
 
-import com.example.finnkinoapp.ui.ImdbApiReader;
-
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;

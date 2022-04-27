@@ -1,4 +1,4 @@
-package com.example.finnkinoapp.ui;
+package com.example.finnkinoapp.ui.Movie;
 
 import org.json.JSONArray;
 import org.json.JSONException;
