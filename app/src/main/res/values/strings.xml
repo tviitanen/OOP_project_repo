@@ -16,7 +16,7 @@
     <string name="emailRequired">Email is required!</string>
     <string name="emailIncorrect">Email is incorrect!</string>
     <string name="passwordRequired">Password is required!</string>
-    <string name="passwordShort">Password too short. Password must contain at least 6 characters.</string>
+    <string name="passwordShort">Password too short. Password must contain at least 12 characters.</string>
     <string name="loginSuccessful">Login completed successfully!</string>
     <string name="loginError">An error occurred during login, check your credentials!</string>
 

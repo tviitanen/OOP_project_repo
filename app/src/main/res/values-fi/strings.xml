@@ -54,7 +54,7 @@
     <string name="emailRequired">Sähköposti vaaditaan!</string>
     <string name="emailIncorrect">Sähköposti on väärin!</string>
     <string name="passwordRequired">Salasana vaaditaan!</string>
-    <string name="passwordShort">Salasana on liian lyhyt. Salasanan tulee olla vähintään 6 merkkiä.</string>
+    <string name="passwordShort">Salasana on liian lyhyt. Salasanan tulee olla vähintään 12 merkkiä.</string>
     <string name="loginSuccessful">Sisäänkirjautuminen onnistui!</string>
     <string name="loginError">Tapahtui virhe, tarkista tietosi!</string>
     <string name="loggedOut">Olet nyt kirjautunut ulos.</string>
