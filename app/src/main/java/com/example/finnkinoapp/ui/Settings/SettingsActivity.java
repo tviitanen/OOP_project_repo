@@ -111,6 +111,7 @@ public class SettingsActivity extends AppCompatActivity {
         });
 
         // load current settings
+
         try {
             switch1.setChecked( settings.getTheme() );
 
