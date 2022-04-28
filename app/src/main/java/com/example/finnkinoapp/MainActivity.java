@@ -38,6 +38,10 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.finnkinoapp.databinding.ActivityMainBinding;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.util.Set;
+
 public class MainActivity extends AppCompatActivity {
 
     private AppBarConfiguration mAppBarConfiguration;
@@ -128,6 +132,22 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public void onResume() {
         super.onResume();
+
+        // check if settings.xml
+        File file = new File(getApplicationContext().getFilesDir() + "/" + "settings.xml");
+        if(file.exists()) {
+            System.out.println("\n\n\n\n\n\nTIEDOSTO on OLEMASSA!!!!\n\n\n\n\n\n");
+        }
+        else {
+            System.out.println("\n\n\n\n\n\n\n\n\n\n\n\nTIEDOSTO EI OLLUT OLEMASSA!!!!\n\n\n\n\n\n\n\n\n\n\n\n");
+            settings.setTheme( false );
+            settings.setLanguage( "English" );
+            try {
+                HandleSettingsXML.getInstance().writeSetXML( getApplicationContext(), settings );
+            } catch (FileNotFoundException e) {
+                e.printStackTrace();
+            }
+        }
 
         // initializing with xml-file settings
         settings = HandleSettingsXML.getInstance().readSetXML( getApplicationContext() );
