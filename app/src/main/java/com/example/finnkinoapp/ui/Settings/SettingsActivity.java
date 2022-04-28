@@ -119,14 +119,10 @@ public class SettingsActivity extends AppCompatActivity {
                 spinner1.setSelection( spinnerPosition );
             }
 
-        } catch (RuntimeException e) {
-            e.printStackTrace();
-
         } catch (Exception e) {
             e.printStackTrace();
-        } finally {
-            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
         }
+
     }
 
 

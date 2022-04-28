@@ -130,18 +130,19 @@ public class MainActivity extends AppCompatActivity {
         super.onResume();
 
         // initializing with xml-file settings
-        settings = HandleSettingsXML.getInstance().readSetXML( getApplicationContext() );
         try {
+            settings = HandleSettingsXML.getInstance().readSetXML( getApplicationContext() );
+
             if (settings.getTheme() == true) {
                 AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
             } else {
                 AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
             }
         }catch (NullPointerException e){
-            
+            e.printStackTrace();
+        } finally {
+            System.out.println("##########SETTINGS APPLIED SUCCESSFUL##########");
         }
-
-        System.out.println("##########SETTINGS APPLIED SUCCESSFUL##########");
 
     }
 }
