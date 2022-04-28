@@ -137,11 +137,15 @@ public class MainActivity extends AppCompatActivity {
             } else {
                 AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
             }
-        }catch (NullPointerException e){
-            
-        }
+        } catch (NullPointerException e) {
+            e.printStackTrace();
 
-        System.out.println("##########SETTINGS APPLIED SUCCESSFUL##########");
+        } catch (Exception e) {
+            e.printStackTrace();
+
+        } finally {
+            System.out.println("##########SETTINGS APPLIED SUCCESSFUL##########");
+        }
 
     }
 }
