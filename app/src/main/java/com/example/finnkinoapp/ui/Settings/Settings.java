@@ -6,7 +6,7 @@ public class Settings {
 
     private static Settings instance = null;
     private String language;
-    private String theme;
+    private Boolean theme;
     private ArrayList<String> languages;
 
 
@@ -32,11 +32,11 @@ public class Settings {
         return language;
     }
 
-    public void setTheme(String theme) {
+    public void setTheme(Boolean theme) {
         this.theme = theme;
     }
 
-    public String getTheme() {
+    public Boolean getTheme() {
         return theme;
     }
 

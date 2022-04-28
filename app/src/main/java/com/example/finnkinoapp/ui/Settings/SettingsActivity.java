@@ -1,5 +1,6 @@
 package com.example.finnkinoapp.ui.Settings;
 
+import android.content.Context;
 import android.os.Build;
 import android.os.Bundle;
 import android.text.Editable;
@@ -51,7 +52,9 @@ public class SettingsActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         // initializing settings class
-        settings = Settings.getInstance();
+        if (settings == null) {
+            settings = HandleSettingsXML.getInstance().readSetXML( getApplicationContext() );
+        }
 
         // initializing switch1
         switch1 = (Switch) findViewById( R.id.switch1 );
@@ -77,30 +80,42 @@ public class SettingsActivity extends AppCompatActivity {
         button2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                // setting settings
-                settings.setLanguage( String.valueOf( spinner1.getSelectedItem() ) );
+                try {
+                    // setting spinner data (language)
+                    settings.setLanguage( String.valueOf( spinner1.getSelectedItem() ) );
 
-                // get switch data
-                if (switch1.isChecked()) {
-                    AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
-                    settings.setTheme( "DARK" );
-                    System.out.println("#DARK#"); // --debug
+                    // get switch data (theme)
+                    if (switch1.isChecked()) {
+                        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
+                        settings.setTheme( true );
 
-                }
-                // disable textedit in main_activity
-                else {
-                    AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
-                    settings.setTheme( "LIGHT" );
-                    System.out.println("#LIGHT#"); // --debug
+                    }
+                    // disable textedit in main_activity
+                    else {
+                        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
+                        settings.setTheme( false );
 
+                    }
+
+                    // write setting on xml
+                    HandleSettingsXML.getInstance().writeSetXML( getApplicationContext(), settings );
+
+                } catch (FileNotFoundException e) {
+                    e.printStackTrace();
                 }
 
                 // send toast
                 Toast.makeText( SettingsActivity.this, "\"Settings saved successfully.\"", Toast.LENGTH_LONG).show();
 
-
             }
         });
+
+        // load current settings
+        switch1.setChecked(settings.getTheme());
+        if (settings.getLanguage() != null) {
+            int spinnerPosition = adapter1.getPosition(settings.getLanguage());
+            spinner1.setSelection(spinnerPosition);
+        }
     }
 
 

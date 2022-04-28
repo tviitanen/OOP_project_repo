@@ -21,11 +21,14 @@ import android.view.Menu;
 import android.widget.Toast;
 
 import com.example.finnkinoapp.ui.Favorites.SetFavoritesActivity;
+import com.example.finnkinoapp.ui.Settings.HandleSettingsXML;
+import com.example.finnkinoapp.ui.Settings.Settings;
 import com.example.finnkinoapp.ui.Settings.SettingsActivity;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.navigation.NavigationView;
 
+import androidx.appcompat.app.AppCompatDelegate;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
@@ -40,6 +43,7 @@ public class MainActivity extends AppCompatActivity {
     private AppBarConfiguration mAppBarConfiguration;
     private ActivityMainBinding binding;
     private DrawerLayout drawer;
+    private Settings settings;
     private FloatingActionButton fab;
 
 
@@ -104,10 +108,9 @@ public class MainActivity extends AppCompatActivity {
 
         // Handle item selection
         switch (item.getItemId()) {
-            //Back button
+            //back button
             case android.R.id.home:
-                //onCreateOptionsMenu();
-                System.out.println( "Home menu kutsuttu!" );
+                // start menu
                 onSupportNavigateUp();
 
                 return true;
@@ -115,7 +118,6 @@ public class MainActivity extends AppCompatActivity {
                 // start 'settings' activity
                 Intent intentSetFavorites = new Intent( getApplicationContext() , SettingsActivity.class);
                 startActivity(intentSetFavorites);
-                System.out.println( "Settings kutsuttu!" );
 
                 return true;
             default:
@@ -123,5 +125,20 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    @Override
+    public void onResume() {
+        super.onResume();
 
+        // initializing with xml-file settings
+        settings = HandleSettingsXML.getInstance().readSetXML( getApplicationContext() );
+        if (settings.getTheme() == true) {
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
+        }
+        else {
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
+        }
+
+        System.out.println("##########SETTINGS APPLIED SUCCESSFUL##########");
+
+    }
 }
