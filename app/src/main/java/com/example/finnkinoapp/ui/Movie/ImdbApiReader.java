@@ -21,6 +21,7 @@ public class ImdbApiReader {
     private String imdbId;
     private String review;
     private String director;
+    private String plot;
 
     public ImdbApiReader(){}
 
@@ -111,9 +112,11 @@ public class ImdbApiReader {
                 JSONObject jsonObject = new JSONObject(this.json);
                 this.review = jsonObject.getString("imDbRating");
                 this.director = jsonObject.getString("directors");
+                this.plot = jsonObject.getString("plot");
 
                 System.out.println("Rating: " + this.review);
                 System.out.println("Director: " + this.director);
+                System.out.println("Plot: "+ this.plot);
             } catch (JSONException e) {
                 e.printStackTrace();
             }
@@ -131,5 +134,7 @@ public class ImdbApiReader {
     public String getDirector() {
         return this.director;
     }
+
+    public String getPlot() {return this.plot;}
 }
 

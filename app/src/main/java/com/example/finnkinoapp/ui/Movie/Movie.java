@@ -11,6 +11,7 @@ public class Movie implements Serializable {
     private String ImdbID;
     private String ImdbReview;
     private String director;
+    private String plot;
 
     public void setID(int id) {
         this.ID = id;
@@ -51,4 +52,8 @@ public class Movie implements Serializable {
     public void setDirector(String director) {this.director = director;}
 
     public String getDirector() {return(this.director);}
+
+    public void setPlot(String plot) {this.plot = plot;}
+
+    public String getPlot() {return(this.plot);}
 }
