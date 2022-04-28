@@ -102,6 +102,8 @@ public class SettingsActivity extends AppCompatActivity {
 
                 } catch (FileNotFoundException e) {
                     e.printStackTrace();
+                } catch (NullPointerException e) {
+
                 }
 
                 // send toast
