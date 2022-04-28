@@ -40,6 +40,7 @@ import com.example.finnkinoapp.databinding.ActivityMainBinding;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.util.ArrayList;
 import java.util.Set;
 
 public class MainActivity extends AppCompatActivity {
@@ -140,10 +141,10 @@ public class MainActivity extends AppCompatActivity {
         }
         else {
             System.out.println("\n\n\n\n\n\n\n\n\n\n\n\nTIEDOSTO EI OLLUT OLEMASSA!!!!\n\n\n\n\n\n\n\n\n\n\n\n");
-            settings.setTheme( false );
-            settings.setLanguage( "English" );
+            Settings.getInstance().setTheme( false );
+            Settings.getInstance().setLanguage( "English" );
             try {
-                HandleSettingsXML.getInstance().writeSetXML( getApplicationContext(), settings );
+                HandleSettingsXML.getInstance().writeSetXML( getApplicationContext(), Settings.getInstance() );
             } catch (FileNotFoundException e) {
                 e.printStackTrace();
             }
