@@ -3,7 +3,7 @@
 *
 * @authors Teemu Viitanen, Miko Mattila, Otto Oikarinen
 *
-* Minimum Android API level 26
+* Minimum Android API level 29
 *
 * Licensed under GNU General Public License v3.0
 *
@@ -62,7 +62,7 @@ public class MainActivity extends AppCompatActivity {
         binding.appBarMain.fab.setOnClickListener( new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make( view, "Send feedback via email", Snackbar.LENGTH_LONG )
+                Snackbar.make( view, R.string.feedback, Snackbar.LENGTH_LONG )
                         .setAction( "Action", null ).show();
 
                 // open email app and set mail address + subject
@@ -73,7 +73,7 @@ public class MainActivity extends AppCompatActivity {
                     intent.addCategory( Intent.CATEGORY_APP_EMAIL );
                     MainActivity.this.startActivity( intent );
                 } catch (android.content.ActivityNotFoundException e) {
-                    Toast.makeText( MainActivity.this, "There is no email client installed.", Toast.LENGTH_SHORT ).show();
+                    Toast.makeText( MainActivity.this, R.string.noEmailClient, Toast.LENGTH_SHORT ).show();
                 }
             }
         } );

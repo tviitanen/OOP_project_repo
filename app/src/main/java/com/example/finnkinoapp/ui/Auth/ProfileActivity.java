@@ -41,7 +41,7 @@ public class ProfileActivity extends AppCompatActivity {
                 // Close activity and go back to home fragment after logout
                 ProfileActivity.this.finish();
 
-                Toast.makeText(ProfileActivity.this, "\"You are now logged out.\"", Toast.LENGTH_LONG).show();
+                Toast.makeText(ProfileActivity.this, R.string.loggedOut, Toast.LENGTH_LONG).show();
 
             }
         });
@@ -67,7 +67,7 @@ public class ProfileActivity extends AppCompatActivity {
                     String email = userProfile.email;
                     String dob = userProfile.dob;
                     // set text fields
-                    welcomeText.setText("Welcome, " + fullName + "!");
+                    welcomeText.setText(getText(R.string.welcomeProfile) + fullName + "!");
                     userName.setText(fullName);
                     userEmail.setText(email);
                     userDob.setText(dob);
@@ -76,7 +76,7 @@ public class ProfileActivity extends AppCompatActivity {
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
-                Toast.makeText(ProfileActivity.this, "\"Something went wrong.\"", Toast.LENGTH_LONG).show();
+                Toast.makeText(ProfileActivity.this, R.string.somethingWrong, Toast.LENGTH_LONG).show();
 
             }
         });

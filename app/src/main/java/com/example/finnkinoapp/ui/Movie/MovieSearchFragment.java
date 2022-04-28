@@ -192,7 +192,7 @@ public class MovieSearchFragment extends Fragment {
             LocalDate.parse(String.valueOf(textDate.getText()), dtf);
 
         } catch (java.time.format.DateTimeParseException e){
-            textDate.setError("Date must be in the form of 'dd.mm.yyyy'");
+            textDate.setError(getText(R.string.dateForm));
             textDate.requestFocus();
             return;
         }
@@ -203,7 +203,7 @@ public class MovieSearchFragment extends Fragment {
             LocalTime.parse(String.valueOf(textTime.getText()), dtt);
 
         } catch (java.time.format.DateTimeParseException e){
-            textTime.setError("Time must be in the form of 'H:mm'");
+            textTime.setError(getText(R.string.timeForm));
             textTime.requestFocus();
             return;
         }
