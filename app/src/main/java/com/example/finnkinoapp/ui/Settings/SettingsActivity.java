@@ -124,6 +124,8 @@ public class SettingsActivity extends AppCompatActivity {
 
         } catch (Exception e) {
             e.printStackTrace();
+        } finally {
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
         }
     }
 
