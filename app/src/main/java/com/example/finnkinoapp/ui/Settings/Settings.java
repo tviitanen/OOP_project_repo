@@ -11,7 +11,6 @@ public class Settings {
 
 
     private Settings(){
-
         // initializing languages
         languages = new ArrayList<>();
         languages.add("Finnish");

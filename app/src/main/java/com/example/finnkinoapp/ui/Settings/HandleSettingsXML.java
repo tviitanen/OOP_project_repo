@@ -130,8 +130,19 @@ public class HandleSettingsXML {
 
                     // setting new favorites
                     settings = Settings.getInstance();
-                    settings.setLanguage( element.getElementsByTagName( "language" ).item(0).getTextContent() );
-                    settings.setTheme( Boolean.valueOf( element.getElementsByTagName( "theme" ).item(0).getTextContent() ) );
+                    if (element.getElementsByTagName( "language" ).item(0).getTextContent() == null) {
+                        settings.setLanguage( "English" );
+                    }
+                    else {
+                        settings.setLanguage( element.getElementsByTagName( "language" ).item(0).getTextContent() );
+                    }
+
+                    if (Boolean.valueOf( element.getElementsByTagName( "theme" ).item(0).getTextContent() ) == null) {
+                        settings.setTheme( false );
+                    }
+                    else {
+                        settings.setTheme( Boolean.valueOf( element.getElementsByTagName( "theme" ).item(0).getTextContent() ) );
+                    }
 
                 }
             }
