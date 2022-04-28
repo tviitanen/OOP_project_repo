@@ -111,7 +111,6 @@ public class SettingsActivity extends AppCompatActivity {
         });
 
         // load current settings
-
         try {
             switch1.setChecked( settings.getTheme() );
 
@@ -119,6 +118,9 @@ public class SettingsActivity extends AppCompatActivity {
                 int spinnerPosition = adapter1.getPosition( settings.getLanguage() );
                 spinner1.setSelection( spinnerPosition );
             }
+
+        } catch (RuntimeException e) {
+            e.printStackTrace();
 
         } catch (Exception e) {
             e.printStackTrace();
