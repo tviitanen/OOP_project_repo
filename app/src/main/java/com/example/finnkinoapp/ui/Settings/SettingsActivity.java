@@ -111,13 +111,16 @@ public class SettingsActivity extends AppCompatActivity {
         });
 
         // load current settings
-        switch1.setChecked(settings.getTheme());
-        /*
-        if (settings.getLanguage() != null) {
-            int spinnerPosition = adapter1.getPosition(settings.getLanguage());
-            spinner1.setSelection(spinnerPosition);
+        try {
+            switch1.setChecked( settings.getTheme() );
+
+            if (settings.getLanguage() != null) {
+                int spinnerPosition = adapter1.getPosition( settings.getLanguage() );
+                spinner1.setSelection( spinnerPosition );
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
         }
-         */
     }
 
 
