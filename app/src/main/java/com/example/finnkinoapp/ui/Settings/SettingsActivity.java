@@ -119,6 +119,7 @@ public class SettingsActivity extends AppCompatActivity {
                 int spinnerPosition = adapter1.getPosition( settings.getLanguage() );
                 spinner1.setSelection( spinnerPosition );
             }
+
         } catch (Exception e) {
             e.printStackTrace();
         }
