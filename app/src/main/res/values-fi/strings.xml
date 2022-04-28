@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Finnkino-sovellus</string>
+    <string name="action_settings">Asetukset</string>
+    <string name="menu_home">Käyttäjätili</string>
+    <string name="menu_gallery">Etsi</string>
+    <string name="menu_slideshow">Suosikit</string>
+    <string name="next">Seuraava</string>
+    <string name="previous">Edellinen</string>
+    <string name="nav_header_subtitle">support@finnkino.fi</string>
+    <string name="nav_header_title">Finnkino-sovellus</string>
+    <string name="banner">Finnkino app</string>
+    <string name="editTextEmailAddress">sähköposti</string>
+    <string name="editTextPassword">salasana</string>
+    <string name="loginButton">KIRJAUDU</string>
+    <string name="forgotPassword">Unohtuiko Salasana?</string>
+    <string name="registerUser">Rekisteröidy</string>
+    <string name="slogan">Your app to find movies faster</string>
+</resources>
