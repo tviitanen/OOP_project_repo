@@ -17,6 +17,7 @@ import android.widget.Toast;
 
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatDelegate;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
@@ -81,12 +82,14 @@ public class SettingsActivity extends AppCompatActivity {
 
                 // get switch data
                 if (switch1.isChecked()) {
+                    AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
                     settings.setTheme( "DARK" );
                     System.out.println("#DARK#"); // --debug
 
                 }
                 // disable textedit in main_activity
                 else {
+                    AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
                     settings.setTheme( "LIGHT" );
                     System.out.println("#LIGHT#"); // --debug
 
