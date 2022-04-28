@@ -137,10 +137,10 @@ public class MainActivity extends AppCompatActivity {
         // check if settings.xml
         File file = new File(getApplicationContext().getFilesDir() + "/" + "settings.xml");
         if(file.exists()) {
-            System.out.println("\n\n\n\n\n\nTIEDOSTO on OLEMASSA!!!!\n\n\n\n\n\n");
+            System.out.println("##########SETTINGS FILE CREATED##########"); // --debug
         }
         else {
-            System.out.println("\n\n\n\n\n\n\n\n\n\n\n\nTIEDOSTO EI OLLUT OLEMASSA!!!!\n\n\n\n\n\n\n\n\n\n\n\n");
+            // create new file, if not exists
             Settings.getInstance().setTheme( false );
             Settings.getInstance().setLanguage( "English" );
             try {
@@ -158,14 +158,15 @@ public class MainActivity extends AppCompatActivity {
             } else {
                 AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
             }
+
+            System.out.println("##########SETTINGS APPLIED SUCCESSFUL##########"); // --debug
+
         } catch (NullPointerException e) {
             e.printStackTrace();
 
         } catch (Exception e) {
             e.printStackTrace();
 
-        } finally {
-            System.out.println("##########SETTINGS APPLIED SUCCESSFUL##########");
         }
 
     }
