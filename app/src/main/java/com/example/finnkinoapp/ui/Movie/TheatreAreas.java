@@ -8,6 +8,7 @@ import org.xml.sax.SAXException;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Locale;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
@@ -46,24 +47,30 @@ public class TheatreAreas {
             DocumentBuilder builder = DocumentBuilderFactory.newInstance().newDocumentBuilder();
             Document doc = builder.parse(urlString);
             doc.getDocumentElement().normalize();
-            System.out.println("Root element: " + doc.getDocumentElement().getNodeName());
+            //System.out.println("Root element: " + doc.getDocumentElement().getNodeName()); //-debug
 
             NodeList nList = doc.getDocumentElement().getElementsByTagName( "TheatreArea" );
 
             for (int i = 0; i < nList.getLength() ; i++) {
                 Node node = nList.item( i );
-                System.out.println("Element is " + node.getNodeName());
+                // System.out.println("Element is " + node.getNodeName()); //-debug
 
                 if (node.getNodeType() == Node.ELEMENT_NODE) {
                     Element element = (Element) node;
 
                     // asetetaan tiedot omaan luokkaan
                     Theatre thre = new Theatre();
-                    thre.setID(Integer. valueOf(element.getElementsByTagName( "ID" ).item(0).getTextContent()));
-                    thre.setName(element.getElementsByTagName( "Name" ).item(0).getTextContent());
+                    thre.setID(Integer.valueOf(element.getElementsByTagName( "ID" ).item(0).getTextContent()));
+                    // set in english if needed
+                    if (thre.getID() == 1029  && Locale.getDefault().getLanguage() == "en") {
+                        thre.setName("Select area/theatre");
+                    } else {
+                        thre.setName(element.getElementsByTagName( "Name" ).item(0).getTextContent());
+                    }
+
                     setTheatre(thre);
 
-                    System.out.println("Theatre ID is " + thre.getID()); // --debug
+                    //System.out.println("Theatre ID is " + thre.getID()); // --debug
                     //System.out.println(element.getElementsByTagName( "Name" ).item(0).getTextContent()); // --debug
 
                 }
