@@ -62,7 +62,7 @@ public class SettingsActivity extends AppCompatActivity {
         // setting up spinner1
         spinner1 =  (Spinner) findViewById( R.id.spinner1 );
         ArrayAdapter<String> adapter1 =
-                new ArrayAdapter<String>( getApplicationContext(), android.R.layout.simple_spinner_dropdown_item, settings.getLanguages() );
+                new ArrayAdapter<String>( getApplicationContext(), android.R.layout.simple_spinner_dropdown_item, Settings.getInstance().getLanguages() );
         adapter1.setDropDownViewResource( android.R.layout.simple_spinner_dropdown_item );
         spinner1.setAdapter( adapter1 );
 

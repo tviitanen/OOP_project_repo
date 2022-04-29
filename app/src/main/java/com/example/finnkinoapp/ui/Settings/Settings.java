@@ -1,6 +1,7 @@
 package com.example.finnkinoapp.ui.Settings;
 
 import java.util.ArrayList;
+import java.util.Locale;
 
 public class Settings {
 
@@ -13,8 +14,7 @@ public class Settings {
     private Settings(){
         // initializing languages
         languages = new ArrayList<>();
-        languages.add("Finnish");
-        languages.add("English");
+        setLanguages(languages);
     }
 
     public static Settings getInstance() {
@@ -40,10 +40,25 @@ public class Settings {
     }
 
     public void setLanguages(ArrayList<String> languages) {
+        languages = new ArrayList<>();
+
+        // set in finnish if needed
+        if (Locale.getDefault().getLanguage() == "fi") {
+            languages.add("Suomi");
+            languages.add("Englanti");
+        } else {
+            languages.add("Finnish");
+            languages.add("English");
+        }
+
         this.languages = languages;
     }
 
     public ArrayList<String> getLanguages() {
+        if (Locale.getDefault().getLanguage() == "fi") {
+            setLanguages(this.languages);
+        }
+
         return languages;
     }
 }
