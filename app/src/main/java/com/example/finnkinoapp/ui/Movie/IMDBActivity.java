@@ -73,13 +73,13 @@ public class IMDBActivity extends AppCompatActivity {
         moviePlotText = findViewById(R.id.moviePlotText);
 
         movieTitle.setText(this.movie.getOriginalTitle());
-        movieDirector.setText("Director of the movie: ");
+        movieDirector.setText(getText(R.string.director));
         movieDirectorName.setText(this.movie.getDirector());
-        movieReview.setText("This movie has received a grade of: ");
+        movieReview.setText(getText(R.string.movieGrade));
         movieReviewGrade.setText(this.movie.getImdbReview());
-        moviePlot.setText("Plot of the movie: ");
-        if (this.movie.getPlot() == "") {
-            moviePlotText.setText("Not available. ");
+        moviePlot.setText(getText(R.string.plot));
+        if (this.movie.getPlot().equals("")) {
+            moviePlotText.setText(getText(R.string.notAvailable));
         } else {
             moviePlotText.setText(this.movie.getPlot());
         }

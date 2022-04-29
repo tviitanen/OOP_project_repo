@@ -63,7 +63,7 @@ public class SetFavoritesActivity extends AppCompatActivity {
                     HandleFavXML.getInstance().writeXML( getApplicationContext(), favorites );
 
                     // send toast
-                    Toast.makeText( SetFavoritesActivity.this, "\"Favorites saved successfully.\"", Toast.LENGTH_LONG).show();
+                    Toast.makeText( SetFavoritesActivity.this, R.string.favouritesSaved, Toast.LENGTH_LONG).show();
 
                 } catch (FileNotFoundException e) {
                     e.printStackTrace();

@@ -7,16 +7,67 @@
     <string name="nav_header_desc" translatable="false">Navigation header</string>
     <string name="action_settings">Settings</string>
 
+    <!-- MainActivity.java -->
+    <string name="feedback">Send feedback via email</string>
+    <string name="noEmailClient">There is no email client installed</string>
+
+    <!-- LoginFragment.java -->
+    <string name="comingSoon">Feature coming soon!</string>
+    <string name="emailRequired">Email is required!</string>
+    <string name="emailIncorrect">Email is incorrect!</string>
+    <string name="passwordRequired">Password is required!</string>
+    <string name="passwordShort">Password too short. Password must contain at least 12 characters.</string>
+    <string name="loginSuccessful">Login completed successfully!</string>
+    <string name="loginError">An error occurred during login, check your credentials!</string>
+
+    <!-- ProfileActivity.java -->
+    <string name="loggedOut">You are now logged out.</string>
+    <string name="welcomeProfile">Welcome, </string>
+    <string name="somethingWrong">Something went wrong.</string>
+
+    <!-- RegisterActivity.java -->
+    <string name="fullNameRequired">Full name is required!</string>
+    <string name="dobRequired">Date of Birth is required!</string>
+    <string name="dobForm">Date of Birth must be in the form of \'dd.mm.yyyy\'</string>
+    <string name="lowercaseRequired">Password must contain at least one lowercase letter</string>
+    <string name="uppercaseRequired">Password must contain at least one uppercase letter</string>
+    <string name="specialRequired">Password must contain at least one special character (!@#$%&amp;)</string>
+    <string name="numberRequired">Password must contain at least one number</string>
+    <string name="registrationComplete">Registration completed successfully!</string>
+    <string name="registrationError">An error occurred during registration, try again</string>
+
+    <!-- SetFavoritesActivity.java -->
+    <string name="favouritesSaved">Favorites saved successfully</string>
+
+    <!-- IMDBActivity.java -->
+    <string name="director">Director of the movie: </string>
+    <string name="movieGrade">This movie has received a grade of: </string>
+    <string name="plot">Plot of the movie: </string>
+    <string name="notAvailable">Not available</string>
+
+    <!-- MovieSearchFragment.java -->
+    <string name="dateForm">Date must be in the form of \'dd.mm.yyyy\'</string>
+    <string name="timeForm">Time must be in the form of \'H:mm\'</string>
+
+    <!-- Settings -->
+    <string name="english">English</string>
+    <string name="finnish">Finnish</string>
+    <string name="settingsSaved">Settings saved successfully.</string>
+
     <string name="menu_home">Account</string>
     <string name="menu_gallery">Search</string>
     <string name="menu_slideshow">Favorites</string>
     <string name="title_activity_imdbactivity" translatable="false">IMDBActivity</string>
+
     <!-- Strings used for fragments for navigation -->
     <string name="first_fragment_label" translatable="false">First Fragment</string>
     <string name="second_fragment_label" translatable="false">Second Fragment</string>
     <string name="next">Next</string>
     <string name="previous">Previous</string>
+    <string name="hello_first_fragment" translatable="false">Hello first fragment</string>
+    <string name="hello_second_fragment" translatable="false">Hello second fragment. Arg: %1$s</string>
 
+    <!-- Strings for fragmet_home.xml -->
     <string name="editTextEmailAddress">email</string>
     <string name="editTextPassword">password</string>
     <string name="loginButton">LOGIN</string>
@@ -25,18 +76,50 @@
     <string name="banner">Finnkino app</string>
     <string name="slogan">Your app to find movies faster</string>
 
+    <!-- activity_profile.xml -->
+    <string name="welcomeText">Welcome!</string>
+    <string name="userNameTitle">Full name:</string>
+    <string name="emailTitle">Email address:</string>
+    <string name="dobTitle">Date of birth:</string>
+    <string name="logOutButton">logout</string>
+
+    <!-- activity_profile.xml -->
+    <string name="editTextEmailAddressProfile">Email</string>
+    <string name="editTextPasswordProfile">Password</string>
+    <string name="registerButton">REGISTER</string>
+    <string name="editTextPersonName">Full Name</string>
+    <string name="logOutButtonProfile">Full Name</string>
+    <string name="editTextBirhtDate">Date of Birth</string>
+
+    <!-- activity_setfavorites.xml -->
+    <string name="textView7">Favourite 5</string>
+    <string name="textView1">Change Favorites</string>
+    <string name="textView5">Favourite 3</string>
+    <string name="textView6">Favourite 4</string>
+    <string name="textView4">Favourite 2</string>
+    <string name="textView2">User</string>
+    <string name="textView3">Favourite 1</string>
+    <string name="button_back">Back to favourites</string>
+    <string name="button2">Save Favourites</string>
+
+    <!-- activity_settings.xml -->
+    <string name="switch1">Light - Dark</string>
+    <string name="button_back_settings">back</string>
+    <string name="button_save">apply</string>
+    <string name="textViewLang">Languages:</string>
+    <string name="textViewLang3">Setting 2:</string>
+    <string name="textViewLang4">Setting 3:</string>
+    <string name="textViewInfo">Settings</string>
+
+    <!-- fragment_gallery.xml -->
+    <string name="textView1_gallery">Finnkino search</string>
+    <string name="button_back_gallery">search</string>
+
+    <!-- fragment_slideshow.xml -->
+    <string name="textView1_slideshow">Favorites</string>
+    <string name="button_back_slideshow">Set new favorites</string>
+    <string name="movieTitle">Favorites in XML</string>
 
 
 
-
-
-
-
-
-
-
-
-
-    <string name="hello_first_fragment" translatable="false">Hello first fragment</string>
-    <string name="hello_second_fragment" translatable="false">Hello second fragment. Arg: %1$s</string>
 </resources>

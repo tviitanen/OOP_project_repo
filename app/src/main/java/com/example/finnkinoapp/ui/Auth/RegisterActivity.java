@@ -108,12 +108,12 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
 
         // check that necessary info is given by user
         if (fullName.isEmpty()) {
-            editTextTextPersonName.setError("Full name is required!");
+            editTextTextPersonName.setError(getText(R.string.fullNameRequired));
             editTextTextPersonName.requestFocus();
             return;
         }
         if (dateOfBirth.isEmpty()) {
-            editTextBirthDate.setError("Date of Birth is required!");
+            editTextBirthDate.setError(getText(R.string.dobRequired));
             editTextBirthDate.requestFocus();
             return;
         }
@@ -122,50 +122,50 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
             LocalDate dob = LocalDate.parse(dateOfBirth, dtf);
         } catch (java.time.format.DateTimeParseException e){
 
-            editTextBirthDate.setError("Date of Birth must be in the form of 'dd.mm.yyyy'");
+            editTextBirthDate.setError(getText(R.string.dobForm));
             editTextBirthDate.requestFocus();
             return;
         }
         if (email.isEmpty()) {
-            editTextTextEmailAddress.setError("Email is required!");
+            editTextTextEmailAddress.setError(getText(R.string.emailRequired));
             editTextTextEmailAddress.requestFocus();
             return;
         }
         // check email format
         if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
-            editTextTextEmailAddress.setError("Email is incorrect!");
+            editTextTextEmailAddress.setError(getText(R.string.emailIncorrect));
             editTextTextEmailAddress.requestFocus();
             return;
         }
         if (password.isEmpty()) {
-            editTextTextPassword.setError("Password is required!");
+            editTextTextPassword.setError(getText(R.string.passwordRequired));
             editTextTextPassword.requestFocus();
             return;
         }
 
         // check password strength 12 chars long, at least one special char, lowercase and uppercase letter and number
         if (password.length() < 12) {
-            editTextTextPassword.setError("Password too short. Atleast 6 characters required.");
+            editTextTextPassword.setError(getText(R.string.passwordShort));
             editTextTextPassword.requestFocus();
             return;
         }
-        if (!password.matches("(?=.*[a-ö]) ")){
-            editTextTextPassword.setError("Password must contain atleast one lowercase letter");
+        if (!password.matches("(?=.*[a-ö]).*")){
+            editTextTextPassword.setError(getText(R.string.lowercaseRequired));
             editTextTextPassword.requestFocus();
             return;
         }
-        if (!password.matches("(?=.*[A-Ö])")){
-            editTextTextPassword.setError("Password must contain atleast one uppercase letter");
+        if (!password.matches("(?=.*[A-Z]).*")){
+            editTextTextPassword.setError(getText(R.string.uppercaseRequired));
             editTextTextPassword.requestFocus();
             return;
         }
-        if (!password.matches("(?=.[!@#\\$%\\^&])")){
-            editTextTextPassword.setError("Password must contain atleast one special character (!@#$%&)");
+        if (!password.matches("(?=.*[!@#\\$%\\^&]).*")){
+            editTextTextPassword.setError(getText(R.string.specialRequired));
             editTextTextPassword.requestFocus();
             return;
         }
-        if (!password.matches("(?=.*[0-9]) ")){
-            editTextTextPassword.setError("Password must contain atleast one number");
+        if (!password.matches("(?=.*[0-9]).*")){
+            editTextTextPassword.setError(getText(R.string.numberRequired));
             editTextTextPassword.requestFocus();
             return;
         }
@@ -184,14 +184,14 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
                                 public void onComplete(@NonNull Task<Void> task) {
                                     // if data added to a db succesfully, make a toast notice
                                     if (task.isSuccessful()) {
-                                        Toast.makeText(RegisterActivity.this, "\"Registration completed successfully\"", Toast.LENGTH_LONG).show();
+                                        Toast.makeText(RegisterActivity.this, R.string.registrationComplete, Toast.LENGTH_LONG).show();
                                     } else {
-                                        Toast.makeText(RegisterActivity.this, "\"An error occurred during registration, try again\"", Toast.LENGTH_LONG).show();
+                                        Toast.makeText(RegisterActivity.this, R.string.registrationError, Toast.LENGTH_LONG).show();
                                     }
                                 }
                             });
                         } else {
-                            Toast.makeText(RegisterActivity.this, "\"An error occurred during registration, try again\"", Toast.LENGTH_LONG).show();
+                            Toast.makeText(RegisterActivity.this, R.string.registrationError, Toast.LENGTH_LONG).show();
 
                         }
                     }

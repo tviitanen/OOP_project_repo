@@ -83,7 +83,7 @@ public class LogInFragment extends Fragment implements  View.OnClickListener {
                 userLogin();
                 break;
             case R.id.forgotPassword:
-                Toast.makeText(getActivity(), "\"Feature coming soon...\"", Toast.LENGTH_LONG).show();
+                Toast.makeText(getActivity(), R.string.comingSoon, Toast.LENGTH_LONG).show();
                 break;
         }
     }
@@ -93,24 +93,24 @@ public class LogInFragment extends Fragment implements  View.OnClickListener {
         String password = editTextPassword.getText().toString().trim();
 
         if (email.isEmpty()) {
-            editTextEmail.setError("Email is required!");
+            editTextEmail.setError(getText(R.string.emailRequired));
             editTextEmail.requestFocus();
             return;
         }
         // check email format
         if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
-            editTextEmail.setError("Email is incorrect!");
+            editTextEmail.setError(getText(R.string.emailIncorrect));
             editTextEmail.requestFocus();
             return;
         }
         if (password.isEmpty()) {
-            editTextPassword.setError("Password is required!");
+            editTextPassword.setError(getText(R.string.passwordRequired));
             editTextPassword.requestFocus();
             return;
         }
         // check lenght of the password  (firebase minimum lenght is 6)
         if (password.length() < 6) {
-            editTextPassword.setError("Password too short. Password contains atleast 6 characters.");
+            editTextPassword.setError(getText(R.string.passwordShort));
             editTextPassword.requestFocus();
             return;
         }
@@ -122,10 +122,10 @@ public class LogInFragment extends Fragment implements  View.OnClickListener {
                 // if data added to a db succesfully, make a toast notice
                 if (task.isSuccessful()) {
                     // redirect to user profile
-                    Toast.makeText(getActivity(), "\"Login completed successfully!\"", Toast.LENGTH_LONG).show();
+                    Toast.makeText(getActivity(), R.string.loginSuccessful, Toast.LENGTH_LONG).show();
                     startActivity(new Intent(getActivity(), ProfileActivity.class));
                 } else {
-                Toast.makeText(getActivity(), "\"An error occurred during login, check your credentials!\"", Toast.LENGTH_LONG).show();
+                Toast.makeText(getActivity(), R.string.loginError, Toast.LENGTH_LONG).show();
                 }
             }
         });

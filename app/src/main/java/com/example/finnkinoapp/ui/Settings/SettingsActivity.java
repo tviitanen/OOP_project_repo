@@ -107,7 +107,7 @@ public class SettingsActivity extends AppCompatActivity {
                 }
 
                 // send toast
-                Toast.makeText( SettingsActivity.this, "\"Settings saved successfully.\"", Toast.LENGTH_LONG).show();
+                Toast.makeText( SettingsActivity.this, R.string.settingsSaved, Toast.LENGTH_LONG).show();
 
             }
         });
