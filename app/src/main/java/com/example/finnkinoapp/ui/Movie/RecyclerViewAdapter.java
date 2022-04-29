@@ -42,7 +42,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     // binds the data to the TextView in each row
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
-        // muodostetaan näytöskohtainen teksti
+        // creating view spesific content
         Movie movie = mData.get(position);
         String show = "\n" + movie.getTitle() + "\n"
                 + movie.getShowStart() + "\n";

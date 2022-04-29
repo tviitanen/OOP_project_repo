@@ -10,6 +10,7 @@ import android.widget.Button;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -43,6 +44,12 @@ public class FavoriteFragment extends Fragment {
 
         // setting up recycler view for favorites
         recyclerView1 = (RecyclerView) view.findViewById(R.id.recyclerView1);
+
+        RecyclerView.ItemDecoration itemDecoration = new
+                DividerItemDecoration(getActivity(), DividerItemDecoration.VERTICAL);
+        recyclerView1.addItemDecoration(itemDecoration);
+
+
         ArrayList<Favorites> favoritesArrayList = handleFavXML.readXML( context );
         setRecyclerView(favoritesArrayList);
 
