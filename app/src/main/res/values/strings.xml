@@ -103,7 +103,7 @@
     <string name="button2">Save Favourites</string>
 
     <!-- activity_settings.xml -->
-    <string name="switch1">Light - Dark</string>
+    <string name="switch1">Darkmode</string>
     <string name="button_back_settings">back</string>
     <string name="button_save">apply</string>
     <string name="textViewLang">Languages:</string>

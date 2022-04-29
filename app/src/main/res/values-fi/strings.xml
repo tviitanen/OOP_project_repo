@@ -36,7 +36,7 @@
     <string name="textView3">Suosikki 1</string>
     <string name="button_back">Takaisin</string>
     <string name="button2">Tallenna</string>
-    <string name="switch1">Vaalea - Tumma</string>
+    <string name="switch1">Tumma teema</string>
     <string name="button_back_settings">takaisin</string>
     <string name="button_save">aseta</string>
     <string name="textViewLang">Kielet</string>
